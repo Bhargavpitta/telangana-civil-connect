@@ -2,104 +2,266 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Telangana Civil Supplies Design System */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Government Color Palette */
+    --header-blue: 216 51% 24%;
+    --nav-blue: 213 48% 32%;
+    --accent-green: 123 47% 33%;
+    --light-gray: 216 18% 96%;
+    --text-dark: 200 19% 16%;
+    
+    /* Semantic tokens */
+    --background: 216 18% 96%;
+    --foreground: 200 19% 16%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 200 19% 16%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 200 19% 16%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 216 51% 24%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 213 48% 32%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 216 18% 96%;
+    --muted-foreground: 200 19% 40%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 123 47% 33%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 216 18% 88%;
+    --input: 216 18% 88%;
+    --ring: 216 51% 24%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 98%;
+    /* Ticker colors */
+    --ticker-bg: 123 47% 33%;
+    --ticker-text: 0 0% 100%;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Footer */
+    --footer-bg: 216 51% 20%;
+    --footer-text: 0 0% 90%;
   }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-}
-
-@layer base {
   * {
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     @apply bg-background text-foreground;
+    font-family: 'Roboto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer components {
+  /* Header Styles */
+  .header-container {
+    @apply bg-white shadow-md sticky top-0 z-50 transition-shadow duration-300;
+  }
+
+  .header-container.scrolled {
+    @apply shadow-lg;
+  }
+
+  /* Navigation Styles */
+  .nav-container {
+    background-color: hsl(var(--nav-blue));
+  }
+
+  .nav-link {
+    @apply text-white px-4 py-3 text-sm font-medium uppercase tracking-wide transition-all duration-200;
+  }
+
+  .nav-link:hover {
+    background-color: hsl(var(--header-blue));
+  }
+
+  .nav-dropdown {
+    @apply absolute top-full left-0 min-w-[220px] bg-white shadow-lg rounded-b-lg opacity-0 invisible translate-y-2 transition-all duration-200;
+  }
+
+  .nav-item:hover .nav-dropdown {
+    @apply opacity-100 visible translate-y-0;
+  }
+
+  .dropdown-link {
+    @apply block px-4 py-3 text-sm text-foreground hover:bg-muted transition-colors border-b border-border last:border-0;
+  }
+
+  /* Hero Cards */
+  .hero-card {
+    @apply bg-white rounded-xl shadow-lg p-6 text-center transition-all duration-300;
+  }
+
+  .hero-card:hover {
+    @apply shadow-xl -translate-y-1;
+  }
+
+  .hero-card-image {
+    @apply w-full h-48 object-contain mx-auto mb-4;
+  }
+
+  .hero-card-title {
+    color: hsl(var(--nav-blue));
+    @apply text-xl font-bold mb-1;
+  }
+
+  .hero-card-subtitle {
+    color: hsl(var(--accent-green));
+    @apply text-sm font-medium uppercase tracking-wide;
+  }
+
+  /* Services Grid */
+  .service-card {
+    @apply bg-white rounded-xl shadow-md p-6 text-center transition-all duration-300 cursor-pointer;
+  }
+
+  .service-card:hover {
+    @apply shadow-lg scale-105;
+  }
+
+  .service-icon {
+    @apply w-16 h-16 mx-auto mb-3 object-contain;
+  }
+
+  .service-label {
+    @apply text-sm font-medium text-foreground leading-tight;
+  }
+
+  /* News Ticker */
+  .ticker-container {
+    background-color: hsl(var(--ticker-bg));
+    @apply overflow-hidden;
+  }
+
+  .ticker-label {
+    @apply bg-red-600 text-white px-4 py-2 font-bold text-sm uppercase;
+  }
+
+  .ticker-content {
+    @apply text-white py-2;
+  }
+
+  /* Contacts Panel */
+  .contacts-panel {
+    @apply bg-white rounded-xl shadow-md p-6;
+  }
+
+  .contact-title {
+    @apply text-xl font-bold mb-4;
+  }
+
+  .contact-title span:first-child {
+    color: hsl(var(--header-blue));
+  }
+
+  .contact-title span:last-child {
+    color: hsl(var(--accent-green));
+  }
+
+  .contact-number {
+    color: hsl(var(--accent-green));
+    @apply font-bold text-lg;
+  }
+
+  .contact-phones {
+    color: hsl(var(--nav-blue));
+    @apply text-sm;
+  }
+
+  /* Important Links */
+  .important-link {
+    color: hsl(var(--nav-blue));
+    @apply block py-2 text-sm font-medium hover:text-accent transition-colors border-b border-border last:border-0;
+  }
+
+  .new-badge {
+    @apply inline-block bg-red-500 text-white text-xs px-2 py-0.5 rounded ml-2 animate-pulse;
+  }
+
+  /* Footer */
+  .footer-container {
+    background-color: hsl(var(--footer-bg));
+  }
+
+  .footer-links {
+    @apply flex flex-wrap justify-center gap-4 py-3 border-b border-white/20;
+  }
+
+  .footer-link {
+    @apply text-white/90 text-sm hover:text-white transition-colors;
+  }
+
+  /* Mobile Menu */
+  .mobile-menu-overlay {
+    @apply fixed inset-0 bg-black/50 z-40;
+  }
+
+  .mobile-menu {
+    background-color: hsl(var(--nav-blue));
+    @apply fixed left-0 top-0 h-full w-80 max-w-[85vw] z-50 overflow-y-auto;
+  }
+
+  .mobile-menu-header {
+    @apply flex items-center justify-between p-4 border-b border-white/20;
+  }
+
+  .mobile-nav-link {
+    @apply flex items-center justify-between text-white px-4 py-3 border-b border-white/10 text-sm;
+  }
+
+  .mobile-nav-link:hover {
+    background-color: hsl(var(--header-blue));
+  }
+
+  .mobile-submenu {
+    background-color: hsl(var(--header-blue));
+  }
+
+  .mobile-submenu-link {
+    @apply block text-white/90 px-6 py-2.5 text-sm border-b border-white/5 hover:text-white;
+  }
+
+  /* Scroll to top */
+  .scroll-to-top {
+    @apply fixed bottom-6 right-6 w-12 h-12 bg-primary text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-secondary z-40;
+  }
+}
+
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .gradient-bar {
+    background: linear-gradient(
+      to right,
+      #f97316 0%,
+      #f97316 25%,
+      #22c55e 25%,
+      #22c55e 50%,
+      #eab308 50%,
+      #eab308 75%,
+      #22c55e 75%,
+      #22c55e 100%
+    );
+    height: 6px;
   }
 }
