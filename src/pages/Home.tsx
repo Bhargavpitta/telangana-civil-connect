@@ -13,6 +13,7 @@ import telanganaLogo from '@/assets/telangana-logo.png';
 import cmImage from '@/assets/cm.png';
 import ministerImage from '@/assets/minister.png';
 import tgRisingLogo from '@/assets/telangana-rising.png';
+import commissionerImage from '@/assets/commissioner.png';
 
 const heroCards = [
   {
@@ -32,6 +33,12 @@ const heroCards = [
     name: 'Sri Capt. N.Uttam Kumar Reddy',
     title: "Hon'ble Minister for Irrigation &",
     subtitle: 'CAD and Food & Civil Supplies',
+  },
+  {
+    image: commissionerImage,
+    name: 'Sri T.S. Chouhan, IAS',
+    title: 'Commissioner',
+    subtitle: 'Public Distribution System (PDS)',
   },
 ];
 
