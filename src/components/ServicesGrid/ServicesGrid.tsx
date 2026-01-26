@@ -1,71 +1,71 @@
 import { motion } from 'framer-motion';
-import { 
-  CreditCard, 
-  Monitor, 
-  Package, 
-  Flame, 
-  AlertCircle, 
-  MapPin, 
-  ClipboardList, 
-  BarChart3, 
-  DollarSign, 
-  Globe 
-} from 'lucide-react';
+
+// Import service images
+import foodSecurityImg from '@/assets/foodsecurity.jpg';
+import eposImg from '@/assets/epos.jpg';
+import supplyChainImg from '@/assets/supplychain.jpg';
+import deepamImg from '@/assets/deepam.jpg';
+import redressalImg from '@/assets/redressal.jpg';
+import gpsImg from '@/assets/globalpension.jpg';
+import procurementImg from '@/assets/procurement.jpg';
+import etaalImg from '@/assets/etaal.jpg';
+import financeImg from '@/assets/finance.jpg';
+import annavitranImg from '@/assets/annavitran.jpg';
 
 interface Service {
-  icon: React.ReactNode;
+  image: string;
   label: string;
   href: string;
 }
 
 const services: Service[] = [
   {
-    icon: <CreditCard className="w-12 h-12 text-nav-blue" />,
+    image: foodSecurityImg,
     label: 'Food Security Card',
     href: 'https://epds.telangana.gov.in/FoodSecurityAct/',
   },
   {
-    icon: <Monitor className="w-12 h-12 text-nav-blue" />,
+    image: eposImg,
     label: 'Electronic Point of Sale',
     href: 'https://epos.telangana.gov.in/ePoS/login.html',
   },
   {
-    icon: <Package className="w-12 h-12 text-nav-blue" />,
+    image: supplyChainImg,
     label: 'Supply Chain Management',
     href: 'https://scm.telangana.gov.in/SCM/',
   },
   {
-    icon: <Flame className="w-12 h-12 text-accent-green" />,
+    image: deepamImg,
     label: 'DEEPAM',
     href: 'https://epds.telangana.gov.in/FoodSecurityAct/',
   },
   {
-    icon: <AlertCircle className="w-12 h-12 text-nav-blue" />,
+    image: redressalImg,
     label: 'Grievance Redressal System for E2E PDS',
     href: 'https://tgspdsgrams.telangana.gov.in/IGRMS/',
   },
   {
-    icon: <MapPin className="w-12 h-12 text-nav-blue" />,
+    image: gpsImg,
     label: 'Global Position System',
     href: 'https://tggtracking.com/',
   },
   {
-    icon: <ClipboardList className="w-12 h-12 text-nav-blue" />,
+    image: procurementImg,
     label: 'Online Procurement Management System',
     href: 'https://pps.telangana.gov.in/View/Login.aspx',
   },
   {
-    icon: <BarChart3 className="w-12 h-12 text-nav-blue" />,
+    image: etaalImg,
     label: 'etaal',
     href: 'https://etaal.gov.in',
   },
   {
-    icon: <DollarSign className="w-12 h-12 text-nav-blue" />,
+    image: financeImg,
     label: 'Financial Management System',
     href: 'https://tscscfms.cgg.gov.in/Login.do',
   },
   {
-    icon: <Globe className="w-12 h-12 text-accent-green" />,
+    image: annavitranImg,
     label: 'Annavitran Portal',
     href: 'https://annavitran.nic.in/welcome',
   },
@@ -82,35 +82,48 @@ const container = {
 };
 
 const item = {
-  hidden: { opacity: 0, scale: 0.8 },
-  show: { opacity: 1, scale: 1, transition: { duration: 0.3 } },
+  hidden: { opacity: 0, y: 20 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.3 } },
 };
 
 const ServicesGrid = () => {
   return (
-    <section className="py-12 px-4 bg-muted/20">
-      <div className="container mx-auto">
+    <section className="py-8 px-4 bg-white">
+      <div className="container mx-auto max-w-7xl">
         <motion.div
           variants={container}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: '-50px' }}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6"
         >
           {services.map((service, index) => (
-            <motion.a
+            <motion.div
               key={index}
-              href={service.href}
-              target="_blank"
-              rel="noopener noreferrer"
               variants={item}
-              className="service-card"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
+              className="flex flex-col items-center"
             >
-              <div className="service-icon">{service.icon}</div>
-              <p className="service-label">{service.label}</p>
-            </motion.a>
+              {/* Image Card */}
+              <motion.a
+                href={service.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-32 h-32 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden mb-3"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <img 
+                  src={service.image} 
+                  alt={service.label}
+                  className="w-full h-full object-contain p-2"
+                />
+              </motion.a>
+              
+              {/* Label Below Card */}
+              <p className="text-center text-xs font-medium text-slate-700 leading-tight max-w-[140px]">
+                {service.label}
+              </p>
+            </motion.div>
           ))}
         </motion.div>
       </div>
