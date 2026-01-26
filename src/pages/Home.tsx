@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Header from '@/components/Header/Header';
 import Navbar from '@/components/Navbar/Navbar';
@@ -35,6 +36,26 @@ const heroCards = [
 ];
 
 const Home = () => {
+  const [isNavbarSticky, setIsNavbarSticky] = useState(false);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      // Header height is approximately 100px
+      if (scrollY > 100) {
+        setIsNavbarSticky(true);
+        setIsHeaderVisible(false);
+      } else {
+        setIsNavbarSticky(false);
+        setIsHeaderVisible(true);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -42,8 +63,11 @@ const Home = () => {
       transition={{ duration: 0.5 }}
       className="min-h-screen flex flex-col"
     >
-      <Header logoUrl={telanganaLogo} />
-      <Navbar />
+      <Header logoUrl={telanganaLogo} isVisible={isHeaderVisible} />
+      <Navbar isSticky={isNavbarSticky} />
+      
+      {/* Spacer for when navbar becomes fixed */}
+      {isNavbarSticky && <div className="h-12" />}
       
       <main className="flex-1">
         <HeroSection cards={heroCards} />

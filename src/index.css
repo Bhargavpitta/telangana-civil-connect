@@ -86,7 +86,7 @@
   }
 
   .nav-link {
-    @apply text-white px-4 py-3 text-sm font-medium uppercase tracking-wide transition-all duration-200;
+    @apply text-white px-2 xl:px-3 py-3 text-xs xl:text-sm font-medium uppercase tracking-wide transition-all duration-200;
   }
 
   .nav-link:hover {
@@ -94,11 +94,13 @@
   }
 
   .nav-dropdown {
-    @apply absolute top-full left-0 min-w-[220px] bg-white shadow-lg rounded-b-lg opacity-0 invisible translate-y-2 transition-all duration-200;
+    @apply min-w-[220px] bg-white shadow-lg rounded-b-lg opacity-0 invisible transition-all duration-200;
+    position: fixed;
+    z-index: 100;
   }
 
   .nav-item:hover .nav-dropdown {
-    @apply opacity-100 visible translate-y-0;
+    @apply opacity-100 visible;
   }
 
   .dropdown-link {
