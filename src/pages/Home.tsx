@@ -9,11 +9,11 @@ import ContactsPanel from '@/components/ContactsPanel/ContactsPanel';
 import Footer from '@/components/Footer/Footer';
 
 // Import images
-import telanganaLogo from '@/assets/telangana-logo.png';
-import cmImage from '@/assets/cm.png';
-import ministerImage from '@/assets/minister.png';
-import tgRisingLogo from '@/assets/telangana-rising.png';
-import commissionerImage from '@/assets/commissioner.png';
+import telanganaLogo from '@/assets/civilLogo.png';
+import cmImage from '@/assets/revanthReddy.jpeg';
+import ministerImage from '@/assets/uttam.jpeg';
+import tgRisingLogo from '@/assets/risingTelangana.jpeg';
+import commissionerImage from '@/assets/DS.webp';
 
 const heroCards = [
   {
@@ -23,22 +23,16 @@ const heroCards = [
     subtitle: 'Telangana',
   },
   {
-    image: tgRisingLogo,
-    name: 'Telangana Rising',
-    title: '',
-    isLogo: true,
+    image: commissionerImage,
+    name: 'Sri D.S Chouhan IPS',
+    title: 'Commissioner of Civil Supplies',
+    subtitle: 'Telangana',
   },
-  {
+   {
     image: ministerImage,
     name: 'Sri Capt. N.Uttam Kumar Reddy',
     title: "Hon'ble Minister for Irrigation &",
     subtitle: 'CAD and Food & Civil Supplies',
-  },
-  {
-    image: commissionerImage,
-    name: 'Sri T.S. Chouhan, IAS',
-    title: 'Commissioner',
-    subtitle: 'Public Distribution System (PDS)',
   },
 ];
 
