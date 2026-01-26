@@ -1,27 +1,17 @@
-import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 interface HeaderProps {
   logoUrl: string;
+  isVisible: boolean;
 }
 
-const Header = ({ logoUrl }: HeaderProps) => {
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
+const Header = ({ logoUrl, isVisible }: HeaderProps) => {
   return (
     <motion.header 
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
-      className={`header-container ${isScrolled ? 'scrolled' : ''}`}
+      initial={{ y: 0 }}
+      animate={{ y: isVisible ? 0 : -200 }}
+      transition={{ duration: 0.3, ease: 'easeOut' }}
+      className="header-container bg-white shadow-md z-40"
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-start py-4 gap-6">
@@ -42,7 +32,7 @@ const Header = ({ logoUrl }: HeaderProps) => {
 
           {/* Title */}
           <div className="flex flex-col">
-            <h1 className="text-xl md:text-2xl lg:text-3xl font-extrabold text-text-dark tracking-wide leading-tight">
+            <h1 className="text-xl md:text-2xl lg:text-3xl font-extrabold text-foreground tracking-wide leading-tight">
               CONSUMER AFFAIRS, FOOD AND CIVIL SUPPLIES DEPARTMENT
             </h1>
             <p className="text-base md:text-lg font-medium text-muted-foreground mt-1">

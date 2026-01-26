@@ -73,7 +73,11 @@ const menuItems: MenuItem[] = [
   { label: 'CONTACTS', href: '/contacts' },
 ];
 
-const Navbar = () => {
+interface NavbarProps {
+  isSticky: boolean;
+}
+
+const Navbar = ({ isSticky }: NavbarProps) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
 
@@ -84,18 +88,18 @@ const Navbar = () => {
   return (
     <>
       {/* Desktop Navigation */}
-      <nav className="nav-container hidden lg:block">
+      <nav className={`nav-container hidden lg:block ${isSticky ? 'fixed top-0 left-0 right-0 z-50 shadow-lg' : ''}`}>
         <div className="container mx-auto px-4">
-          <ul className="flex flex-wrap justify-center">
+          <ul className="flex flex-nowrap justify-center">
             {menuItems.map((item) => (
               <li key={item.label} className="nav-item relative group">
                 {item.submenu ? (
                   <>
-                    <button className="nav-link flex items-center gap-1">
+                    <button className="nav-link flex items-center gap-1 whitespace-nowrap text-xs xl:text-sm">
                       {item.label}
                       <ChevronDown className="w-3 h-3" />
                     </button>
-                    <div className="nav-dropdown z-50">
+                    <div className="nav-dropdown z-[100] fixed">
                       {item.submenu.map((sub) => (
                         <a
                           key={sub.label}
@@ -109,7 +113,7 @@ const Navbar = () => {
                     </div>
                   </>
                 ) : (
-                  <a href={item.href} className="nav-link block">
+                  <a href={item.href} className="nav-link block whitespace-nowrap text-xs xl:text-sm">
                     {item.label}
                   </a>
                 )}
