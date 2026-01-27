@@ -66,7 +66,24 @@ const menuItems: MenuItem[] = [
       { label: 'PRICE DETAILS', href: '/price/details' },
     ],
   },
-  { label: 'IMPORTANT LINKS', href: '/links' },
+  { label: 'IMPORTANT LINKS', 
+    submenu: [
+      { label: 'Electronic Point of Sale(ePoS)', href: '/links' },
+      { label: 'Electronic Public Distribution System (epds)', href: '/links/' },
+      { label: 'Supply Chain Management System(SCM)', href: '/links' },
+      { label: 'Online Procurement Management System(OPMS)', href: '/links/' },
+      { label: 'Financial Management Systemsepds(FMS)', href: '/links/' },
+      { label: 'Deepam', href: '/links/' },
+      { label: 'Annavitran Portal', href: '/links/c' },
+      { label: 'Consumer', href: '/links/' },
+      { label: 'National Portal of India', href: '/links' },
+      { label: 'Telangana Portal', href: '/links/farmer' },
+      { label: 'Food Corporation of India', href: '/links' },
+      { label: 'Ministry of Consumer Affairs Food & Public Distribution,Govt. of India', href: '/links/' },
+      { label: 'Hindustan Petroleum', href: '/links/' },
+      { label: 'Indian Oil Corporation', href: '/links/' },
+      { label: 'Bharat Petroleum', href: '/links/' },
+    ] },
   { label: 'RTI ACTS', href: '/rti' },
   { label: 'SOCIAL AUDIT REPORTS', href: '/audit' },
   { label: 'LOGIN', href: '/login' },
@@ -84,27 +101,32 @@ const Navbar = ({ isSticky }: NavbarProps) => {
   const toggleSubmenu = (label: string) => {
     setOpenSubmenu(openSubmenu === label ? null : label);
   };
-
+const handleKeyDown = (e: React.KeyboardEvent, label: string) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      toggleSubmenu(label);
+    }
+  };
   return (
     <>
       {/* Desktop Navigation */}
-      <nav className={`nav-container hidden lg:block ${isSticky ? 'fixed top-0 left-0 right-0 z-50 shadow-lg' : ''}`}>
-        <div className="container mx-auto px-4">
-          <ul className="flex flex-nowrap justify-center">
+      <nav className={`nav-container hidden lg:block ${isSticky ? 'fixed top-0 left-0 right-0 z-50 shadow-lg' : 'relative'}`}>
+        <div className="w-full px-2 max-w-[1600px] mx-auto">
+          <ul className="flex flex-nowrap justify-center gap-0.5 items-center">
             {menuItems.map((item) => (
               <li key={item.label} className="nav-item relative group">
                 {item.submenu ? (
-                  <>
-                    <button className="nav-link flex items-center gap-1 whitespace-nowrap text-xs xl:text-sm">
+                  <><button className="flex items-center justify-center gap-1 whitespace-nowrap text-white hover:bg-white/10 transition-colors py-3 px-2 text-[10px] xl:text-xs 2xl:text-sm font-medium w-full">
+                   
                       {item.label}
                       <ChevronDown className="w-3 h-3" />
                     </button>
-                    <div className="nav-dropdown z-[100] fixed">
+                    <div className="absolute top-full left-0 hidden group-hover:block z-[100] min-w-[250px] max-h-[60vh] overflow-y-auto bg-white shadow-2xl border-t-2 border-orange-500 custom-scrollbar">
                       {item.submenu.map((sub) => (
                         <a
                           key={sub.label}
                           href={sub.href}
-                          className="dropdown-link flex items-center justify-between"
+                          className="flex items-center justify-between px-4 py-2.5 text-slate-700 hover:bg-slate-50 hover:text-blue-700 text-[11px] border-b border-slate-100 transition-colors"
                         >
                           {sub.label}
                           {sub.isNew && <span className="new-badge">NEW</span>}
