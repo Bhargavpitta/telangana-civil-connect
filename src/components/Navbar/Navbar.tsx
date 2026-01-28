@@ -1,6 +1,9 @@
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronRight, ChevronDown } from 'lucide-react';
+import RTIPopup from "./RTIPopup";
+import "./Navbar.css";
 
 interface SubMenuItem {
   label: string;
@@ -58,7 +61,12 @@ const menuItems: MenuItem[] = [
     ],
   },
   { label: 'CIRCULARS', href: '/circulars' },
-  { label: 'VIDEO GALLERY', href: '/videos' },
+  {
+    label: 'VIDEO GALLERY',
+    submenu: [
+      { label: 'Consumer Awareness Videos', href: '/videos/consumer-awareness' },
+    ],
+  },
   {
     label: 'PRICE',
     submenu: [
@@ -67,23 +75,38 @@ const menuItems: MenuItem[] = [
     ],
   },
   { label: 'IMPORTANT LINKS', href: '/links' },
-  { label: 'RTI ACTS', href: '/rti' },
+  {
+    label: 'RTI ACTS',
+    submenu: [
+      { label: 'RTI Act,2005-English', href: '/rti/english' },
+      { label: 'RTI Act,2005-Telugu', href: '/rti/telugu' },
+      { label: 'Information Under Section', href: '/rti/handbook' },
+    ],
+  },
   { label: 'SOCIAL AUDIT REPORTS', href: '/audit' },
   { label: 'LOGIN', href: '/login' },
   { label: 'CONTACTS', href: '/contacts' },
 ];
-
 interface NavbarProps {
-  isSticky: boolean;
+  isSticky?: boolean;
 }
 
-const Navbar = ({ isSticky }: NavbarProps) => {
+const Navbar = ({ isSticky = false }: NavbarProps) => {
+  const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
 
   const toggleSubmenu = (label: string) => {
     setOpenSubmenu(openSubmenu === label ? null : label);
   };
+
+  const goToRTI = (type: string) => {
+    setMobileMenuOpen(false);
+    setOpenSubmenu(null);
+    navigate(`/rti/${type}`);
+  };
+ 
+
 
   return (
     <>
@@ -101,18 +124,21 @@ const Navbar = ({ isSticky }: NavbarProps) => {
                     </button>
                     <div className="nav-dropdown z-[100] fixed">
                       {item.submenu.map((sub) => (
-                        <a
-                          key={sub.label}
-                          href={sub.href}
-                          className="dropdown-link flex items-center justify-between"
-                        >
-                          {sub.label}
-                          {sub.isNew && <span className="new-badge">NEW</span>}
-                        </a>
-                      ))}
-                    </div>
-                  </>
-                ) : (
+  <button
+    key={sub.label}
+    className="dropdown-link text-left w-full"
+    onClick={() => {
+      setOpenSubmenu(null);
+      navigate(sub.href!);
+    }}
+  >
+    {sub.label}
+    {sub.isNew && <span className="new-badge">NEW</span>}
+  </button>
+))}
+                          </div>
+                        </>
+                        ) : (
                   <a href={item.href} className="nav-link block whitespace-nowrap text-xs xl:text-sm">
                     {item.label}
                   </a>
