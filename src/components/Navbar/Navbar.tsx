@@ -6,6 +6,7 @@ interface SubMenuItem {
   label: string;
   href: string;
   isNew?: boolean;
+  isPdf?: boolean; // <-- mark PDFs
 }
 
 interface MenuItem {
@@ -47,13 +48,15 @@ const menuItems: MenuItem[] = [
   {
     label: 'CITIZEN SERVICES',
     submenu: [
-      { label: 'HOW TO APPLY FOR A NEW RATION CARD', href: '/services/new-ration-card' },
-      { label: 'HOW TO RAISE A CONSUMER COMPLAINTS', href: '/services/complaints' },
-      { label: 'KNOW YOUR RATION CARD STATUS', href: '/services/ration-status' },
-      { label: 'KNOW YOUR EPOS TRANSACTIONS', href: '/services/epos' },
+      { label: 'HOW TO APPLY FOR A NEW RATION CARD',  href: '/pdfs/NFSARajpatra.pdf', isPdf: true },
+      { label: 'GAZETTE OF TELANGANA FS RULES (27.2.16)', href: '/pdfs/Gazette of telanganaFS Rules.27.2.16.pdf', isPdf: true },
+      { label: 'HOW TO APPLY FOR RATION CARD', href: '/pdfs/HOW TO APPLY FOR RATION CARD.pdf', isPdf: true },
+      { label: 'HOW TO LODGE A CONSUMER COMPLAINT',  href: '/pdfs/HOW TO LODGE A CONSUMER COMPLAINT.pdf', isPdf: true },
+      { label: 'KNOW YOUR RATION CARD  DETAILS',  href: "/services/ration-status", isPdf:true },
+      { label: 'KNOW YOUR EPOS TRANSACTIONS', href: "/services/epos-transactions", isPdf:true  },
       { label: 'KNOW YOUR FPSHOP DETAILS', href: '/services/fpshop' },
       { label: 'KNOW YOUR NEAREST FPSHOP', href: '/services/nearest-fpshop' },
-      { label: 'CITIZEN CHARTER', href: '/services/charter' },
+      { label: 'CITIZEN CHARTER',  href: '/pdfs/1583 CITIZEN CHARTER Dated 13-07-2022.pdf', isPdf:true },
       { label: 'CONSUMER AFFAIRS EVENT REQUESTING FORM', href: '/services/event-form', isNew: true },
     ],
   },
@@ -66,24 +69,7 @@ const menuItems: MenuItem[] = [
       { label: 'PRICE DETAILS', href: '/price/details' },
     ],
   },
-  { label: 'IMPORTANT LINKS', 
-    submenu: [
-      { label: 'Electronic Point of Sale(ePoS)', href: 'https://epos.telangana.gov.in/ePoS/login.html' },
-      { label: 'Electronic Public Distribution System (epds)', href: 'https://epds.telangana.gov.in/FoodSecurityAct/' },
-      { label: 'Supply Chain Management System(SCM)', href: 'https://scm.telangana.gov.in/SCM/login.html' },
-      { label: 'Online Procurement Management System(OPMS)', href: 'https://pps.telangana.gov.in/View/Login.aspx' },
-      { label: 'Financial Management Systemsepds(FMS)', href: 'https://tscscfms.cgg.gov.in/Login.do' },
-      { label: 'Deepam', href: 'https://epds.telangana.gov.in/FoodSecurityAct/' },
-      { label: 'Annavitran Portal', href: '/links/c' },
-      { label: 'Consumer', href: '/links/' },
-      { label: 'National Portal of India', href: 'https://india.gov.in/' },
-      { label: 'Telangana Portal', href: 'https://www.telangana.gov.in/' },
-      { label: 'Food Corporation of India', href: 'https://fci.gov.in/' },
-      { label: 'Ministry of Consumer Affairs Food & Public Distribution,Govt. of India', href: '/links/' },
-      { label: 'Hindustan Petroleum', href: 'https://hindustanpetroleum.com/' },
-      { label: 'Indian Oil Corporation', href: 'https://iocl.com/' },
-      { label: 'Bharat Petroleum', href: 'https://bharatpetroleum.com/' },
-    ] },
+  { label: 'IMPORTANT LINKS', href: '/links' },
   { label: 'RTI ACTS', href: '/rti' },
   { label: 'SOCIAL AUDIT REPORTS', href: '/audit' },
   { label: 'LOGIN', href: '/login' },
@@ -101,32 +87,28 @@ const Navbar = ({ isSticky }: NavbarProps) => {
   const toggleSubmenu = (label: string) => {
     setOpenSubmenu(openSubmenu === label ? null : label);
   };
-const handleKeyDown = (e: React.KeyboardEvent, label: string) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      toggleSubmenu(label);
-    }
-  };
+
   return (
     <>
       {/* Desktop Navigation */}
-      <nav className={`nav-container hidden lg:block ${isSticky ? 'fixed top-0 left-0 right-0 z-50 shadow-lg' : 'relative'}`}>
-        <div className="w-full px-2 max-w-[1600px] mx-auto">
-          <ul className="flex flex-nowrap justify-center gap-0.5 items-center">
+      <nav className={`nav-container hidden lg:block ${isSticky ? 'fixed top-0 left-0 right-0 z-50 shadow-lg' : ''}`}>
+        <div className="container mx-auto px-4">
+          <ul className="flex flex-nowrap justify-center">
             {menuItems.map((item) => (
               <li key={item.label} className="nav-item relative group">
                 {item.submenu ? (
-                  <><button className="flex items-center justify-center gap-1 whitespace-nowrap text-white hover:bg-white/10 transition-colors py-3 px-2 text-[10px] xl:text-xs 2xl:text-sm font-medium w-full">
-                   
+                  <>
+                    <button className="nav-link flex items-center gap-1 whitespace-nowrap text-xs xl:text-sm">
                       {item.label}
                       <ChevronDown className="w-3 h-3" />
                     </button>
-                    <div className="absolute top-full left-0 hidden group-hover:block z-[100] min-w-[250px] max-h-[60vh] overflow-y-auto bg-white shadow-2xl border-t-2 border-orange-500 custom-scrollbar">
+                    <div className="nav-dropdown z-[100] fixed">
                       {item.submenu.map((sub) => (
                         <a
                           key={sub.label}
-                          href={sub.href}
-                          className="flex items-center justify-between px-4 py-2.5 text-slate-700 hover:bg-slate-50 hover:text-blue-700 text-[11px] border-b border-slate-100 transition-colors"
+                          href={sub.isPdf ? '#' : sub.href} // prevent default for PDFs
+                          onClick={sub.isPdf ? () => window.open(sub.href) : undefined} // open PDFs in new tab
+                          className="dropdown-link flex items-center justify-between"
                         >
                           {sub.label}
                           {sub.isNew && <span className="new-badge">NEW</span>}
@@ -221,7 +203,8 @@ const handleKeyDown = (e: React.KeyboardEvent, label: string) => {
                               {item.submenu.map((sub) => (
                                 <a
                                   key={sub.label}
-                                  href={sub.href}
+                                  href={sub.isPdf ? '#' : sub.href} // prevent default for PDFs
+                                  onClick={sub.isPdf ? () => window.open(sub.href) : undefined} // open PDFs in new tab
                                   className="mobile-submenu-link flex items-center justify-between"
                                 >
                                   {sub.label}
