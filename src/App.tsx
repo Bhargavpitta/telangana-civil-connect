@@ -16,6 +16,9 @@ import Reports from "./pages/Reports";
 
 
 
+import PriceDetailsPage from "./PriceDetailsPage";
+import SocialAuditPage from "./SocialAuditPage";
+import PriceUpload from "./PriceUpload";
 
 const queryClient = new QueryClient();
 
@@ -48,6 +51,10 @@ const App = () => (
           
 
           {/* Catch-all */}
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="/price/upload" element={<PriceUpload/>} />
+          <Route path="/price/details" element={<PriceDetailsPage />} />
+          <Route path="/audit" element={<SocialAuditPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
