@@ -9,6 +9,7 @@ interface SubMenuItem {
   label: string;
   href: string;
   isNew?: boolean;
+  isPdf?: boolean; // <-- mark PDFs
 }
 
 interface MenuItem {
@@ -50,13 +51,15 @@ const menuItems: MenuItem[] = [
   {
     label: 'CITIZEN SERVICES',
     submenu: [
-      { label: 'HOW TO APPLY FOR A NEW RATION CARD', href: '/services/new-ration-card' },
-      { label: 'HOW TO RAISE A CONSUMER COMPLAINTS', href: '/services/complaints' },
-      { label: 'KNOW YOUR RATION CARD STATUS', href: '/services/ration-status' },
-      { label: 'KNOW YOUR EPOS TRANSACTIONS', href: '/services/epos' },
+      { label: 'HOW TO APPLY FOR A NEW RATION CARD',  href: '/pdfs/NFSARajpatra.pdf', isPdf: true },
+      { label: 'GAZETTE OF TELANGANA FS RULES (27.2.16)', href: '/pdfs/Gazette of telanganaFS Rules.27.2.16.pdf', isPdf: true },
+      { label: 'HOW TO APPLY FOR RATION CARD', href: '/pdfs/HOW TO APPLY FOR RATION CARD.pdf', isPdf: true },
+      { label: 'HOW TO LODGE A CONSUMER COMPLAINT',  href: '/pdfs/HOW TO LODGE A CONSUMER COMPLAINT.pdf', isPdf: true },
+      { label: 'KNOW YOUR RATION CARD  DETAILS',  href: "/services/ration-status", isPdf:true },
+      { label: 'KNOW YOUR EPOS TRANSACTIONS', href: "/services/epos-transactions", isPdf:true  },
       { label: 'KNOW YOUR FPSHOP DETAILS', href: '/services/fpshop' },
       { label: 'KNOW YOUR NEAREST FPSHOP', href: '/services/nearest-fpshop' },
-      { label: 'CITIZEN CHARTER', href: '/services/charter' },
+      { label: 'CITIZEN CHARTER',  href: '/pdfs/1583 CITIZEN CHARTER Dated 13-07-2022.pdf', isPdf:true },
       { label: 'CONSUMER AFFAIRS EVENT REQUESTING FORM', href: '/services/event-form', isNew: true },
     ],
   },
@@ -74,7 +77,6 @@ const menuItems: MenuItem[] = [
       { label: 'PRICE DETAILS', href: '/price/details' },
     ],
   },
-  { label: 'IMPORTANT LINKS', href: '/links' },
   {
     label: 'RTI ACTS',
     submenu: [
@@ -83,6 +85,24 @@ const menuItems: MenuItem[] = [
       { label: 'Information Under Section', href: '/rti/handbook' },
     ],
   },
+  { label: 'IMPORTANT LINKS', 
+    submenu: [
+      { label: 'Electronic Point of Sale(ePoS)', href: 'https://epos.telangana.gov.in/ePoS/login.html' },
+      { label: 'Electronic Public Distribution System (epds)', href: 'https://epds.telangana.gov.in/FoodSecurityAct/' },
+      { label: 'Supply Chain Management System(SCM)', href: 'https://scm.telangana.gov.in/SCM/login.html' },
+      { label: 'Online Procurement Management System(OPMS)', href: 'https://pps.telangana.gov.in/View/Login.aspx' },
+      { label: 'Financial Management Systemsepds(FMS)', href: 'https://tscscfms.cgg.gov.in/Login.do' },
+      { label: 'Deepam', href: 'https://epds.telangana.gov.in/FoodSecurityAct/' },
+      { label: 'Annavitran Portal', href: '/links/c' },
+      { label: 'Consumer', href: '/links/' },
+      { label: 'National Portal of India', href: 'https://india.gov.in/' },
+      { label: 'Telangana Portal', href: 'https://www.telangana.gov.in/' },
+      { label: 'Food Corporation of India', href: 'https://fci.gov.in/' },
+      { label: 'Ministry of Consumer Affairs Food & Public Distribution,Govt. of India', href: '/links/' },
+      { label: 'Hindustan Petroleum', href: 'https://hindustanpetroleum.com/' },
+      { label: 'Indian Oil Corporation', href: 'https://iocl.com/' },
+      { label: 'Bharat Petroleum', href: 'https://bharatpetroleum.com/' },
+    ] },
   { label: 'SOCIAL AUDIT REPORTS', href: '/audit' },
   { label: 'LOGIN', href: '/login' },
   { label: 'CONTACTS', href: '/contacts' },
@@ -225,7 +245,8 @@ const Navbar = ({ isSticky = false }: NavbarProps) => {
                               {item.submenu.map((sub) => (
                                 <a
                                   key={sub.label}
-                                  href={sub.href}
+                                  href={sub.isPdf ? '#' : sub.href} // prevent default for PDFs
+                                  onClick={sub.isPdf ? () => window.open(sub.href) : undefined} // open PDFs in new tab
                                   className="mobile-submenu-link flex items-center justify-between"
                                 >
                                   {sub.label}
