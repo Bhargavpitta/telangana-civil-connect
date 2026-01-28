@@ -1,0 +1,44 @@
+.rti-container {
+  padding: 20px 40px;
+}
+
+.rti-lang {
+  color: red;
+  font-weight: bold;
+}
+
+.rti-box {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.rti-bar {
+  background: #e6e6e6;
+  text-align: center;
+  font-weight: bold;
+  padding: 8px;
+}
+
+.rti-title-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.rti-title-row a {
+  color: #a00000;
+  font-weight: bold;
+}
+
+.download-btn {
+  background: #2f3e83;
+  color: white;
+  padding: 5px 10px;
+  text-decoration: none;
+}
+
+.rti-pdf {
+  width: 100%;
+  height: 850px;
+  border: 1px solid #999;
+}
