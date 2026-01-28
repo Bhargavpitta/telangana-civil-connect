@@ -1,0 +1,144 @@
+.eoffice-wrapper {
+  background-color: #0b6b2a;
+  min-height: 100vh;
+  font-family: "Times New Roman", serif;
+  color: white;
+  display: flex;
+  flex-direction: column;
+
+  position: relative;   /* ⭐ ADD THIS */
+  z-index: 0;           /* ⭐ ADD THIS */
+}
+
+.eoffice-title {
+  font-size: 32px;
+  color: red;
+  padding: 15px 20px;
+  font-weight: bold;
+}
+
+.eoffice-marquee {
+  background: yellow;
+  color: red;
+  font-size: 26px;
+  font-weight: bold;
+  padding: 8px 10px;
+  text-align: center;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+.login-table {
+  border-collapse: collapse;
+  background: #0b6b2a;
+  border: 2px solid #003300;
+  width: 420px;
+}
+
+.login-table th {
+  background: #0b6b2a;
+  border: 1px solid #003300;
+  padding: 8px;
+  font-size: 18px;
+}
+
+.login-table td {
+  border: 1px solid #003300;
+  padding: 6px;
+  font-size: 15px;
+}
+
+.login-table input {
+  width: 100%;
+  padding: 4px;
+}
+
+.captcha-box {
+  background: #6fa8dc;
+  color: black;
+  text-align: center;
+  font-weight: bold;
+  padding: 6px;
+}
+
+.login-btn, .reset-btn, .refresh-btn {
+  padding: 4px 10px;
+  margin-right: 6px;
+  cursor: pointer;
+}
+
+.eoffice-footer {
+  margin-top: auto;
+  border-top: 6px solid cyan;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 20px;
+  font-size: 14px;
+  color: magenta;
+}
+
+.eoffice-marquee {
+  background: yellow;
+  color: red;
+  font-size: 26px;
+  font-weight: bold;
+  padding: 8px 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+
+  z-index: -1;   /* ⭐ THIS IS THE REAL FIX */ 
+}
+
+
+/* scrolling text */
+.marquee-text {
+  display: inline-block;
+  position: relative;
+  animation: slideNotice 2s ease-in-out infinite alternate;
+
+  pointer-events: none;
+}
+
+.marquee-text {
+  pointer-events: none;
+}
+
+
+@keyframes slideNotice {
+  0%   { transform: translateX(-130px); }
+  100% { transform: translateX(130px); }
+}
+
+
+.login-table input {
+  width: 100%;
+  padding: 4px;
+
+  color: black;        
+  background: white; 
+}
+
+.eoffice-marquee {
+  position: relative;
+  z-index: 1;
+}
+
+.marquee-text {
+  pointer-events: none;
+}
+
+/* Ensure login form is clickable */
+.login-container {
+  position: relative;
+  z-index: 10;
+}
+
+
+.eoffice-marquee {
+  pointer-events: none;
+}
