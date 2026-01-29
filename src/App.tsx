@@ -5,7 +5,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Layout from "./components/Layout";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Layout from "./components/Layout";
 import Index from "./pages/Index";
 import IT from "./pages/wings/IT";
 import Administration from "./pages/wings/Administration";
@@ -110,11 +109,7 @@ const App = () => {
 
   <Route
   path="/rti/:type"
-  element={
-    <Layout>
-      <RTIPage />
-    </Layout>
-  }
+  element={<RTIPage />}
 />
 
           <Route path="/price/upload" element={<PriceUpload/>} />
