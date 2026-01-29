@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronRight, ChevronDown } from 'lucide-react';
+import LoginDropdown from '../LoginDropdown/LoginDropdown';
 
 interface SubMenuItem {
   label: string;
@@ -72,7 +73,6 @@ const menuItems: MenuItem[] = [
   { label: 'IMPORTANT LINKS', href: '/links' },
   { label: 'RTI ACTS', href: '/rti' },
   { label: 'SOCIAL AUDIT REPORTS', href: '/audit' },
-  { label: 'LOGIN', href: '/login' },
   { label: 'CONTACTS', href: '/contacts' },
 ];
 
@@ -106,8 +106,8 @@ const Navbar = ({ isSticky }: NavbarProps) => {
                       {item.submenu.map((sub) => (
                         <a
                           key={sub.label}
-                          href={sub.isPdf ? '#' : sub.href} // prevent default for PDFs
-                          onClick={sub.isPdf ? () => window.open(sub.href) : undefined} // open PDFs in new tab
+                          href={sub.isPdf ? '#' : sub.href}
+                          onClick={sub.isPdf ? () => window.open(sub.href) : undefined}
                           className="dropdown-link flex items-center justify-between"
                         >
                           {sub.label}
@@ -123,6 +123,10 @@ const Navbar = ({ isSticky }: NavbarProps) => {
                 )}
               </li>
             ))}
+            {/* Add Login Dropdown */}
+            <li className="nav-item relative group">
+              <LoginDropdown />
+            </li>
           </ul>
         </div>
       </nav>
