@@ -1,19 +1,14 @@
-import LoginDropdown from '../LoginDropdown/LoginDropdown';
-import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronRight, ChevronDown } from "lucide-react";
-import { Link } from "react-router-dom";
-import { FaFacebookF, FaTwitter, FaGooglePlusG, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
-import { useLocation } from "react-router-dom";
-
+import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import RTIPopup from "./RTIPopup";
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, ChevronRight, ChevronDown } from 'lucide-react';
 
 interface SubMenuItem {
   label: string;
   href: string;
   isNew?: boolean;
-  isPdf?: boolean; // <-- mark PDFs
+  isPdf?: boolean;
+  isExternal?: boolean;
 }
 
 interface MenuItem {
@@ -23,47 +18,47 @@ interface MenuItem {
 }
 
 const menuItems: MenuItem[] = [
-  { label: "HOME", href: "/" },
-  { label: "ABOUT US", href: "/about" },
+  { label: 'HOME', href: '/' },
+  { label: 'ABOUT US', href: '/about' },
   {
-    label: "ADMINISTRATION",
+    label: 'ADMINISTRATION',
     submenu: [
-      { label: "SCHEMES", href: "/administration/schemes" },
-      { label: "ORGANISATION CHART", href: "/administration/org-chart" },
-      { label: "SPECIAL RULES", href: "/administration/rules" },
-      { label: "PENSION", href: "/administration/pension" },
-      { label: "MEDICAL REIMBUSEMENT", href: "/administration/medical" },
-      { label: "CADRE STRENGTH OF CIVIL SUPPLIES DEPT.", href: "/administration/cadre" },
+      { label: 'SCHEMES', href: '/administration/schemes' },
+      { label: 'ORGANISATION CHART', href: '/administration/org-chart' },
+      { label: 'SPECIAL RULES', href: '/administration/rules' },
+      { label: 'PENSION', href: '/administration/pension' },
+      { label: 'MEDICAL REIMBUSEMENT', href: '/administration/medical' },
+      { label: 'CADRE STRENGTH OF CIVIL SUPPLIES DEPT.', href: '/administration/cadre' },
     ],
   },
   {
-    label: "WINGS",
+    label: 'WINGS',
     submenu: [
-      { label: "Information Technology (IT)", href: "/wings/it" },
-      { label: "Administration", href: "/wings/administration" },
-      { label: "Finance", href: "/wings/finance" },
-      { label: "Engineering", href: "/wings/engineering" },
-      { label: "Enforcement", href: "/wings/enforcement" },
-      { label: "Technical", href: "/wings/technical" },
-      { label: "Petroleum Product", href: "/wings/petroleum" },
-      { label: "Public Distribution Wing", href: "/wings/public-distribution" },
-      { label: "Department Login", href: "/wings/login" },
-      { label: "e-office Login", href: "/wings/eoffice" },
-      { label: "Event Requesting Form", href: "/wings/event", isNew: true },
+      { label: 'INFORMATION TECHNOLOGY (IT)', href: '/wings/it' },
+      { label: 'ADMINISTRATION', href: '/wings/admin' },
+      { label: 'FINANCE', href: '/wings/finance' },
+      { label: 'ENGINEERING', href: '/wings/engineering' },
+      { label: 'ENFORCEMENT', href: '/wings/enforcement' },
+      { label: 'TECHNICAL', href: '/wings/technical' },
+      { label: 'PETROLEUM PRODUCT', href: '/wings/petroleum' },
+      { label: 'PUBLIC DISTRIBUTION WING', href: '/wings/pds' },
+      { label: 'DEPARTMENT LOGIN', href: '/wings/login' },
+      { label: 'E-OFFICE LOGIN', href: '/wings/eoffice' },
+      { label: 'EVENT REQUESTING FORM', href: '/wings/event', isNew: true },
     ],
   },
   {
-    label: "CITIZEN SERVICES",
+    label: 'CITIZEN SERVICES',
     submenu: [
-      { label: 'HOW TO APPLY FOR A NEW RATION CARD',  href: '/pdfs/NFSARajpatra.pdf', isPdf: true },
+      { label: 'HOW TO APPLY FOR A NEW RATION CARD', href: '/pdfs/NFSARajpatra.pdf', isPdf: true },
       { label: 'GAZETTE OF TELANGANA FS RULES (27.2.16)', href: '/pdfs/Gazette of telanganaFS Rules.27.2.16.pdf', isPdf: true },
       { label: 'HOW TO APPLY FOR RATION CARD', href: '/pdfs/HOW TO APPLY FOR RATION CARD.pdf', isPdf: true },
-      { label: 'HOW TO LODGE A CONSUMER COMPLAINT',  href: '/pdfs/HOW TO LODGE A CONSUMER COMPLAINT.pdf', isPdf: true },
-      { label: 'KNOW YOUR RATION CARD  DETAILS',  href: "/services/ration-status", isPdf:true },
-      { label: 'KNOW YOUR EPOS TRANSACTIONS', href: "/services/epos-transactions", isPdf:true  },
+      { label: 'HOW TO LODGE A CONSUMER COMPLAINT', href: '/pdfs/HOW TO LODGE A CONSUMER COMPLAINT.pdf', isPdf: true },
+      { label: 'KNOW YOUR RATION CARD DETAILS', href: "/services/ration-status" },
+      { label: 'KNOW YOUR EPOS TRANSACTIONS', href: "/services/epos-transactions" },
       { label: 'KNOW YOUR FPSHOP DETAILS', href: '/services/fpshop' },
       { label: 'KNOW YOUR NEAREST FPSHOP', href: '/services/nearest-fpshop' },
-      { label: 'CITIZEN CHARTER',  href: '/pdfs/1583 CITIZEN CHARTER Dated 13-07-2022.pdf', isPdf:true },
+      { label: 'CITIZEN CHARTER', href: '/pdfs/1583 CITIZEN CHARTER Dated 13-07-2022.pdf', isPdf: true },
       { label: 'CONSUMER AFFAIRS EVENT REQUESTING FORM', href: '/services/event-form', isNew: true },
     ],
   },
@@ -75,10 +70,10 @@ const menuItems: MenuItem[] = [
     ],
   },
   {
-    label: "PRICE",
+    label: 'PRICE',
     submenu: [
-      { label: "PRICE UPLOAD LOGIN", href: "/price/upload" },
-      { label: "PRICE DETAILS", href: "/price/details" },
+      { label: 'PRICE UPLOAD LOGIN', href: '/price/upload' },
+      { label: 'PRICE DETAILS', href: '/price/details' },
     ],
   },
   {
@@ -89,27 +84,31 @@ const menuItems: MenuItem[] = [
       { label: 'Information Under Section', href: '/rti/handbook' },
     ],
   },
-  { label: 'IMPORTANT LINKS', 
+  {
+    label: 'IMPORTANT LINKS',
     submenu: [
-      { label: 'Electronic Point of Sale(ePoS)', href: 'https://epos.telangana.gov.in/ePoS/login.html' },
-      { label: 'Electronic Public Distribution System (epds)', href: 'https://epds.telangana.gov.in/FoodSecurityAct/' },
-      { label: 'Supply Chain Management System(SCM)', href: 'https://scm.telangana.gov.in/SCM/login.html' },
-      { label: 'Online Procurement Management System(OPMS)', href: 'https://pps.telangana.gov.in/View/Login.aspx' },
-      { label: 'Financial Management Systemsepds(FMS)', href: 'https://tscscfms.cgg.gov.in/Login.do' },
-      { label: 'Deepam', href: 'https://epds.telangana.gov.in/FoodSecurityAct/' },
+      { label: 'Electronic Point of Sale(ePoS)', href: 'https://epos.telangana.gov.in/ePoS/login.html', isExternal: true },
+      { label: 'Electronic Public Distribution System (epds)', href: 'https://epds.telangana.gov.in/FoodSecurityAct/', isExternal: true },
+      { label: 'Supply Chain Management System(SCM)', href: 'https://scm.telangana.gov.in/SCM/login.html', isExternal: true },
+      { label: 'Online Procurement Management System(OPMS)', href: 'https://pps.telangana.gov.in/View/Login.aspx', isExternal: true },
+      { label: 'Financial Management Systemsepds(FMS)', href: 'https://tscscfms.cgg.gov.in/Login.do', isExternal: true },
+      { label: 'Deepam', href: 'https://epds.telangana.gov.in/FoodSecurityAct/', isExternal: true },
       { label: 'Annavitran Portal', href: '/links/c' },
       { label: 'Consumer', href: '/links/' },
-      { label: 'National Portal of India', href: 'https://india.gov.in/' },
-      { label: 'Telangana Portal', href: 'https://www.telangana.gov.in/' },
-      { label: 'Food Corporation of India', href: 'https://fci.gov.in/' },
+      { label: 'National Portal of India', href: 'https://india.gov.in/', isExternal: true },
+      { label: 'Telangana Portal', href: 'https://www.telangana.gov.in/', isExternal: true },
+      { label: 'Food Corporation of India', href: 'https://fci.gov.in/', isExternal: true },
       { label: 'Ministry of Consumer Affairs Food & Public Distribution,Govt. of India', href: '/links/' },
-      { label: 'Hindustan Petroleum', href: 'https://hindustanpetroleum.com/' },
-      { label: 'Indian Oil Corporation', href: 'https://iocl.com/' },
-      { label: 'Bharat Petroleum', href: 'https://bharatpetroleum.com/' },
-    ] },
+      { label: 'Hindustan Petroleum', href: 'https://hindustanpetroleum.com/', isExternal: true },
+      { label: 'Indian Oil Corporation', href: 'https://iocl.com/', isExternal: true },
+      { label: 'Bharat Petroleum', href: 'https://bharatpetroleum.com/', isExternal: true },
+    ],
+  },
   { label: 'SOCIAL AUDIT REPORTS', href: '/audit' },
+  { label: 'LOGIN', href: '/login' },
   { label: 'CONTACTS', href: '/contacts' },
 ];
+
 interface NavbarProps {
   isSticky?: boolean;
 }
@@ -118,96 +117,104 @@ const Navbar = ({ isSticky = false }: NavbarProps) => {
   const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
-  const [activeMenu, setActiveMenu] = useState<string | null>(null);
-  const navRef = useRef<HTMLDivElement>(null);
-
-  const location = useLocation();
-  const isWingsPage = location.pathname.startsWith("/wings");
-
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (navRef.current && !navRef.current.contains(event.target as Node)) {
-        setActiveMenu(null);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
 
   const toggleSubmenu = (label: string) => {
     setOpenSubmenu(openSubmenu === label ? null : label);
   };
 
-  const goToRTI = (type: string) => {
+  const handleNavigation = (href: string, isPdf?: boolean, isExternal?: boolean) => {
+    if (isPdf || isExternal) {
+      window.open(href, '_blank');
+    } else {
+      navigate(href);
+    }
     setMobileMenuOpen(false);
     setOpenSubmenu(null);
-    navigate(`/rti/${type}`);
   };
- 
-
 
   return (
     <>
       {/* Desktop Navigation */}
-      <nav className={`nav-container hidden lg:block ${isSticky ? 'fixed top-0 left-0 right-0 z-50 shadow-lg' : ''}`}>
-        <div className="container mx-auto px-4">
-          <ul className="flex flex-nowrap justify-center">
+      <nav
+        className={`bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 hidden lg:block ${
+          isSticky ? 'fixed top-0 left-0 right-0 z-50 shadow-lg' : 'relative'
+        }`}
+      >
+        <div className="w-full px-2 max-w-[1600px] mx-auto">
+          <ul className="flex flex-nowrap justify-center gap-0.5 items-center">
             {menuItems.map((item) => (
-              <li
-  key={item.label}
-  className="relative"
-  onMouseEnter={() => setActiveMenu(item.label)}
-  onMouseLeave={() => setActiveMenu(null)}
->
-  
-
+              <li key={item.label} className="relative group">
                 {item.submenu ? (
                   <>
-                    <button className="nav-link flex items-center gap-1 whitespace-nowrap text-xs xl:text-sm">
+                    <button className="flex items-center justify-center gap-1 whitespace-nowrap text-white hover:bg-white/10 transition-colors py-3 px-2 text-[10px] xl:text-xs 2xl:text-sm font-medium w-full">
                       {item.label}
-                      <ChevronDown className="w-4 h-4" />
+                      <ChevronDown className="w-3 h-3" />
                     </button>
-                    <div className="nav-dropdown z-[100] fixed">
-                      {item.submenu.map((sub) => (
-                        <a
-                          key={sub.label}
-                          href={sub.isPdf ? '#' : sub.href}
-                          onClick={sub.isPdf ? () => window.open(sub.href) : undefined}
-                          className="dropdown-link flex items-center justify-between"
-                        >
-                          {sub.label}
-                          {sub.isNew && <span className="new-badge">NEW</span>}
-                        </a>
-                      ))}
+                    <div className="absolute top-full left-0 hidden group-hover:block z-[100] min-w-[250px] max-h-[60vh] overflow-y-auto bg-white shadow-2xl border-t-2 border-orange-500">
+                      <style>
+                        {`
+                          .custom-scrollbar::-webkit-scrollbar {
+                            width: 8px;
+                          }
+                          .custom-scrollbar::-webkit-scrollbar-track {
+                            background: #f1f1f1;
+                          }
+                          .custom-scrollbar::-webkit-scrollbar-thumb {
+                            background: #888;
+                            border-radius: 4px;
+                          }
+                          .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+                            background: #555;
+                          }
+                        `}
+                      </style>
+                      <div className="custom-scrollbar">
+                        {item.submenu.map((sub) => (
+                          <button
+                            key={sub.label}
+                            onClick={() => handleNavigation(sub.href, sub.isPdf, sub.isExternal)}
+                            className="flex items-center justify-between px-4 py-2.5 text-slate-700 hover:bg-slate-50 hover:text-blue-700 text-[11px] border-b border-slate-100 transition-colors w-full text-left"
+                          >
+                            <span>{sub.label}</span>
+                            {sub.isNew && (
+                              <span className="bg-red-500 text-white text-[9px] px-2 py-0.5 rounded-full font-semibold ml-2">
+                                NEW
+                              </span>
+                            )}
+                          </button>
+                        ))}
+                      </div>
                     </div>
                   </>
                 ) : (
-                  <a href={item.href} className="nav-link block whitespace-nowrap text-xs xl:text-sm">
+                  <button
+                    onClick={() => item.href && handleNavigation(item.href)}
+                    className="block whitespace-nowrap text-white hover:bg-white/10 transition-colors py-3 px-2 text-[10px] xl:text-xs 2xl:text-sm font-medium w-full"
+                  >
                     {item.label}
-                  </Link>
+                  </button>
                 )}
               </li>
             ))}
-            {/* Add Login Dropdown */}
-            <li className="nav-item relative group">
-              <LoginDropdown />
-            </li>
           </ul>
-          
-          
         </div>
       </nav>
 
-      {/* MOBILE NAVBAR  */}
-      <div className="nav-container lg:hidden">
-        <button onClick={() => setMobileMenuOpen(true)} className="text-white p-3 flex items-center gap-2">
-          <Menu className="w-6 h-6" />
-          Menu
-        </button>
+      {/* Mobile Menu Button */}
+      <div className="bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 lg:hidden">
+        <div className="container mx-auto px-4">
+          <button
+            onClick={() => setMobileMenuOpen(true)}
+            className="flex items-center gap-2 text-white py-3"
+            aria-label="Open menu"
+          >
+            <Menu className="w-6 h-6" />
+            <span className="font-medium">Menu</span>
+          </button>
+        </div>
       </div>
 
+      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <>
@@ -215,7 +222,7 @@ const Navbar = ({ isSticky = false }: NavbarProps) => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="mobile-menu-overlay lg:hidden"
+              className="fixed inset-0 bg-black/50 z-[999] lg:hidden"
               onClick={() => setMobileMenuOpen(false)}
             />
             <motion.div
@@ -223,34 +230,36 @@ const Navbar = ({ isSticky = false }: NavbarProps) => {
               animate={{ x: 0 }}
               exit={{ x: '-100%' }}
               transition={{ type: 'tween', duration: 0.3 }}
-              className="mobile-menu lg:hidden"
+              className="fixed top-0 left-0 bottom-0 w-[85%] max-w-sm bg-gradient-to-b from-blue-900 to-blue-800 shadow-2xl z-[1000] overflow-y-auto lg:hidden"
             >
-              <div className="mobile-menu-header">
+              <div className="flex items-center gap-3 p-4 border-b border-white/20 bg-blue-950/50">
                 <input
                   type="text"
                   placeholder="Search"
-                  className="flex-1 bg-white/10 border border-white/20 rounded px-3 py-2 text-white placeholder-white/60 text-sm"
+                  className="flex-1 bg-white/10 border border-white/20 rounded px-3 py-2 text-white placeholder-white/60 text-sm focus:outline-none focus:ring-2 focus:ring-white/30"
                 />
                 <button
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-white ml-3"
+                  className="text-white hover:bg-white/10 p-2 rounded transition-colors"
                   aria-label="Close menu"
                 >
                   <X className="w-6 h-6" />
                 </button>
               </div>
-              <nav>
+              <nav className="py-2">
                 {menuItems.map((item) => (
                   <div key={item.label}>
                     {item.submenu ? (
                       <>
                         <button
                           onClick={() => toggleSubmenu(item.label)}
-                          className="mobile-nav-link w-full"
+                          className="flex items-center justify-between w-full px-4 py-3 text-white hover:bg-white/10 transition-colors border-b border-white/10"
                         >
-                          <span>{item.label}</span>
+                          <span className="font-medium text-sm">{item.label}</span>
                           <div className="flex items-center gap-2">
-                            <span className="text-xs opacity-70">{item.submenu.length}</span>
+                            <span className="text-xs opacity-70 bg-white/20 px-2 py-0.5 rounded-full">
+                              {item.submenu.length}
+                            </span>
                             <ChevronRight
                               className={`w-4 h-4 transition-transform ${
                                 openSubmenu === item.label ? 'rotate-90' : ''
@@ -264,43 +273,37 @@ const Navbar = ({ isSticky = false }: NavbarProps) => {
                               initial={{ height: 0, opacity: 0 }}
                               animate={{ height: 'auto', opacity: 1 }}
                               exit={{ height: 0, opacity: 0 }}
-                              className="mobile-submenu overflow-hidden"
+                              className="overflow-hidden bg-blue-950/30"
                             >
                               {item.submenu.map((sub) => (
-                                <a
+                                <button
                                   key={sub.label}
-                                  href={sub.isPdf ? '#' : sub.href} // prevent default for PDFs
-                                  onClick={sub.isPdf ? () => window.open(sub.href) : undefined} // open PDFs in new tab
-                                  className="mobile-submenu-link flex items-center justify-between"
+                                  onClick={() => handleNavigation(sub.href, sub.isPdf, sub.isExternal)}
+                                  className="flex items-center justify-between w-full px-6 py-2.5 text-white/90 hover:bg-white/10 transition-colors text-sm border-b border-white/5 text-left"
                                 >
-                                  {sub.label}
-                                  {sub.isNew && <span className="new-badge">NEW</span>}
-                                </a>
+                                  <span>{sub.label}</span>
+                                  {sub.isNew && (
+                                    <span className="bg-red-500 text-white text-[9px] px-2 py-0.5 rounded-full font-semibold ml-2">
+                                      NEW
+                                    </span>
+                                  )}
+                                </button>
                               ))}
                             </motion.div>
                           )}
                         </AnimatePresence>
                       </>
                     ) : (
-                      <a href={item.href} className="mobile-nav-link">
+                      <button
+                        onClick={() => item.href && handleNavigation(item.href)}
+                        className="flex items-center justify-between w-full px-4 py-3 text-white hover:bg-white/10 transition-colors border-b border-white/10 font-medium text-sm"
+                      >
                         {item.label}
-                        <ChevronRight className={`${openSubmenu === item.label ? "rotate-90" : ""}`} />
                       </button>
-
-                      {openSubmenu === item.label &&
-                        item.submenu.map((sub) => (
-                          <Link key={sub.label} to={sub.href} className="mobile-submenu-link">
-                            {sub.label}
-                          </Link>
-                        ))}
-                    </>
-                  ) : (
-                    <Link to={item.href!} className="mobile-nav-link">
-                      {item.label}
-                    </Link>
-                  )}
-                </div>
-              ))}
+                    )}
+                  </div>
+                ))}
+              </nav>
             </motion.div>
           </>
         )}
