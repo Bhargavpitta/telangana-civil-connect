@@ -134,6 +134,24 @@ const Navbar = ({ isSticky = false }: NavbarProps) => {
 
   return (
     <>
+      <style>
+        {`
+          .custom-scrollbar::-webkit-scrollbar {
+            width: 8px;
+          }
+          .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+          }
+          .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 4px;
+          }
+          .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #555;
+          }
+        `}
+      </style>
+
       {/* Desktop Navigation */}
       <nav
         className={`bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 hidden lg:block ${
@@ -150,40 +168,21 @@ const Navbar = ({ isSticky = false }: NavbarProps) => {
                       {item.label}
                       <ChevronDown className="w-3 h-3" />
                     </button>
-                    <div className="absolute top-full left-0 hidden group-hover:block z-[100] min-w-[250px] max-h-[60vh] overflow-y-auto bg-white shadow-2xl border-t-2 border-orange-500">
-                      <style>
-                        {`
-                          .custom-scrollbar::-webkit-scrollbar {
-                            width: 8px;
-                          }
-                          .custom-scrollbar::-webkit-scrollbar-track {
-                            background: #f1f1f1;
-                          }
-                          .custom-scrollbar::-webkit-scrollbar-thumb {
-                            background: #888;
-                            border-radius: 4px;
-                          }
-                          .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-                            background: #555;
-                          }
-                        `}
-                      </style>
-                      <div className="custom-scrollbar">
-                        {item.submenu.map((sub) => (
-                          <button
-                            key={sub.label}
-                            onClick={() => handleNavigation(sub.href, sub.isPdf, sub.isExternal)}
-                            className="flex items-center justify-between px-4 py-2.5 text-slate-700 hover:bg-slate-50 hover:text-blue-700 text-[11px] border-b border-slate-100 transition-colors w-full text-left"
-                          >
-                            <span>{sub.label}</span>
-                            {sub.isNew && (
-                              <span className="bg-red-500 text-white text-[9px] px-2 py-0.5 rounded-full font-semibold ml-2">
-                                NEW
-                              </span>
-                            )}
-                          </button>
-                        ))}
-                      </div>
+                    <div className="absolute top-full left-0 hidden group-hover:block z-[100] min-w-[250px] max-h-[60vh] overflow-y-auto bg-white shadow-2xl border-t-2 border-orange-500 custom-scrollbar">
+                      {item.submenu.map((sub) => (
+                        <button
+                          key={sub.label}
+                          onClick={() => handleNavigation(sub.href, sub.isPdf, sub.isExternal)}
+                          className="flex items-center justify-between px-4 py-2.5 text-slate-700 hover:bg-slate-50 hover:text-blue-700 text-[11px] border-b border-slate-100 transition-colors w-full text-left"
+                        >
+                          <span>{sub.label}</span>
+                          {sub.isNew && (
+                            <span className="bg-red-500 text-white text-[9px] px-2 py-0.5 rounded-full font-semibold ml-2">
+                              NEW
+                            </span>
+                          )}
+                        </button>
+                      ))}
                     </div>
                   </>
                 ) : (
