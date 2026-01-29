@@ -1,0 +1,86 @@
+navbar.css       /* Navbar container */
+.navbar {
+  background-color: #1f4fa3;
+  padding: 12px 20px;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+/* Main menu */
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+/* Menu item */
+.menu-item {
+  position: relative;
+}
+
+/* Hide checkbox */
+.menu-item input[type="checkbox"] {
+  display: none;
+}
+
+/* Label style (RTI text) */
+.menu-label {
+  cursor: pointer;
+  font-weight: 500;
+  color: white;
+}
+
+/* Submenu container */
+.submenu {
+  display: none;
+  position: absolute;
+  top: 35px;
+  left: 0;
+  background-color: white;
+  list-style: none;
+  padding: 8px 0;
+  margin: 0;
+  min-width: 240px;
+  border-radius: 4px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+}
+
+/* Show submenu when checkbox is checked */
+.menu-item input:checked + .menu-label + .submenu {
+  display: block;
+}
+
+/* Submenu items */
+.submenu li {
+  padding: 10px 15px;
+}
+
+/* Submenu links */
+.submenu li a {
+  text-decoration: none;
+  color: #1f2937;
+  font-size: 14px;
+  display: block;
+}
+
+/* Hover effect */
+.submenu li:hover {
+  background-color: #f1f5f9;
+}
+
+/* Responsive (optional) */
+@media (max-width: 768px) {
+  .menu {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .submenu {
+    position: static;
+    box-shadow: none;
+  }
+}

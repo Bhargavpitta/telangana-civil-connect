@@ -5,11 +5,14 @@ import { Link } from "react-router-dom";
 import { FaFacebookF, FaTwitter, FaGooglePlusG, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
 
+import { useNavigate } from "react-router-dom";
+import RTIPopup from "./RTIPopup";
 
 interface SubMenuItem {
   label: string;
   href: string;
   isNew?: boolean;
+  isPdf?: boolean; // <-- mark PDFs
 }
 
 interface MenuItem {
@@ -51,18 +54,25 @@ const menuItems: MenuItem[] = [
   {
     label: "CITIZEN SERVICES",
     submenu: [
-      { label: "HOW TO APPLY FOR A NEW RATION CARD", href: "/services/new-ration-card" },
-      { label: "HOW TO RAISE A CONSUMER COMPLAINTS", href: "/services/complaints" },
-      { label: "KNOW YOUR RATION CARD STATUS", href: "/services/ration-status" },
-      { label: "KNOW YOUR EPOS TRANSACTIONS", href: "/services/epos" },
-      { label: "KNOW YOUR FPSHOP DETAILS", href: "/services/fpshop" },
-      { label: "KNOW YOUR NEAREST FPSHOP", href: "/services/nearest-fpshop" },
-      { label: "CITIZEN CHARTER", href: "/services/charter" },
-      { label: "CONSUMER AFFAIRS EVENT REQUESTING FORM", href: "/services/event-form", isNew: true },
+      { label: 'HOW TO APPLY FOR A NEW RATION CARD',  href: '/pdfs/NFSARajpatra.pdf', isPdf: true },
+      { label: 'GAZETTE OF TELANGANA FS RULES (27.2.16)', href: '/pdfs/Gazette of telanganaFS Rules.27.2.16.pdf', isPdf: true },
+      { label: 'HOW TO APPLY FOR RATION CARD', href: '/pdfs/HOW TO APPLY FOR RATION CARD.pdf', isPdf: true },
+      { label: 'HOW TO LODGE A CONSUMER COMPLAINT',  href: '/pdfs/HOW TO LODGE A CONSUMER COMPLAINT.pdf', isPdf: true },
+      { label: 'KNOW YOUR RATION CARD  DETAILS',  href: "/services/ration-status", isPdf:true },
+      { label: 'KNOW YOUR EPOS TRANSACTIONS', href: "/services/epos-transactions", isPdf:true  },
+      { label: 'KNOW YOUR FPSHOP DETAILS', href: '/services/fpshop' },
+      { label: 'KNOW YOUR NEAREST FPSHOP', href: '/services/nearest-fpshop' },
+      { label: 'CITIZEN CHARTER',  href: '/pdfs/1583 CITIZEN CHARTER Dated 13-07-2022.pdf', isPdf:true },
+      { label: 'CONSUMER AFFAIRS EVENT REQUESTING FORM', href: '/services/event-form', isNew: true },
     ],
   },
-  { label: "CIRCULARS", href: "/circulars" },
-  { label: "VIDEO GALLERY", href: "/videos" },
+  { label: 'CIRCULARS', href: '/circulars' },
+  {
+    label: 'VIDEO GALLERY',
+    submenu: [
+      { label: 'Consumer Awareness Videos', href: '/videos/consumer-awareness' },
+    ],
+  },
   {
     label: "PRICE",
     submenu: [
@@ -70,17 +80,42 @@ const menuItems: MenuItem[] = [
       { label: "PRICE DETAILS", href: "/price/details" },
     ],
   },
-  { label: "RTI ACTS", href: "/rti" },
-  { label: "SOCIAL AUDIT REPORTS", href: "/audit" },
-  { label: "LOGIN", href: "/login" },
-  { label: "CONTACTS", href: "/contacts" },
+  {
+    label: 'RTI ACTS',
+    submenu: [
+      { label: 'RTI Act,2005-English', href: '/rti/english' },
+      { label: 'RTI Act,2005-Telugu', href: '/rti/telugu' },
+      { label: 'Information Under Section', href: '/rti/handbook' },
+    ],
+  },
+  { label: 'IMPORTANT LINKS', 
+    submenu: [
+      { label: 'Electronic Point of Sale(ePoS)', href: 'https://epos.telangana.gov.in/ePoS/login.html' },
+      { label: 'Electronic Public Distribution System (epds)', href: 'https://epds.telangana.gov.in/FoodSecurityAct/' },
+      { label: 'Supply Chain Management System(SCM)', href: 'https://scm.telangana.gov.in/SCM/login.html' },
+      { label: 'Online Procurement Management System(OPMS)', href: 'https://pps.telangana.gov.in/View/Login.aspx' },
+      { label: 'Financial Management Systemsepds(FMS)', href: 'https://tscscfms.cgg.gov.in/Login.do' },
+      { label: 'Deepam', href: 'https://epds.telangana.gov.in/FoodSecurityAct/' },
+      { label: 'Annavitran Portal', href: '/links/c' },
+      { label: 'Consumer', href: '/links/' },
+      { label: 'National Portal of India', href: 'https://india.gov.in/' },
+      { label: 'Telangana Portal', href: 'https://www.telangana.gov.in/' },
+      { label: 'Food Corporation of India', href: 'https://fci.gov.in/' },
+      { label: 'Ministry of Consumer Affairs Food & Public Distribution,Govt. of India', href: '/links/' },
+      { label: 'Hindustan Petroleum', href: 'https://hindustanpetroleum.com/' },
+      { label: 'Indian Oil Corporation', href: 'https://iocl.com/' },
+      { label: 'Bharat Petroleum', href: 'https://bharatpetroleum.com/' },
+    ] },
+  { label: 'SOCIAL AUDIT REPORTS', href: '/audit' },
+  { label: 'LOGIN', href: '/login' },
+  { label: 'CONTACTS', href: '/contacts' },
 ];
-
 interface NavbarProps {
-  isSticky: boolean;
+  isSticky?: boolean;
 }
 
-const Navbar = ({ isSticky }: NavbarProps) => {
+const Navbar = ({ isSticky = false }: NavbarProps) => {
+  const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
@@ -105,20 +140,20 @@ const Navbar = ({ isSticky }: NavbarProps) => {
     setOpenSubmenu(openSubmenu === label ? null : label);
   };
 
+  const goToRTI = (type: string) => {
+    setMobileMenuOpen(false);
+    setOpenSubmenu(null);
+    navigate(`/rti/${type}`);
+  };
+ 
+
+
   return (
     <>
-      {/* DESKTOP NAVBAR */}
-
-      <nav
-  ref={navRef}
-  className={`nav-container hidden lg:block ${
-    isSticky ? "fixed top-0 left-0 right-0 z-50 shadow-lg" : "relative"
-  }`}
->
-
-        <div className="w-full px-2 max-w-[1600px] mx-auto flex justify-between items-center">
-
-          <ul className="flex justify-center items-center">
+      {/* Desktop Navigation */}
+      <nav className={`nav-container hidden lg:block ${isSticky ? 'fixed top-0 left-0 right-0 z-50 shadow-lg' : ''}`}>
+        <div className="container mx-auto px-4">
+          <ul className="flex flex-nowrap justify-center">
             {menuItems.map((item) => (
               <li
   key={item.label}
@@ -130,40 +165,28 @@ const Navbar = ({ isSticky }: NavbarProps) => {
 
                 {item.submenu ? (
                   <>
-                    <button
-  className="flex items-center gap-1 text-white h-12 px-4 text-sm font-semibold tracking-wide whitespace-nowrap"
->
-  {activeMenu === item.label && (
-  <div className="absolute top-full left-0 bg-white shadow-lg min-w-[220px] z-50">
-    {item.submenu.map((sub) => (
-      <Link
-        key={sub.label}
-        to={sub.href}
-        onClick={() => setActiveMenu(null)}   // closes after click
-        className="submenu-link flex justify-between items-center px-4 py-2 border-b last:border-none font-normal text-[15px] text-[#1f3b6d]"
-
-      >
-        {sub.label}
-        {sub.isNew && <span className="new-badge">NEW</span>}
-      </Link>
-    ))}
-  </div>
-)}
-
-
+                    <button className="nav-link flex items-center gap-1 whitespace-nowrap text-xs xl:text-sm">
                       {item.label}
                       <ChevronDown className="w-4 h-4" />
                     </button>
-
-
-
-
-                  </>
-                ) : (
-                  <Link
-                    to={item.href!}
-                    className="flex items-center text-white h-12 px-4 text-sm font-semibold tracking-wide whitespace-nowrap"
-                  >
+                    <div className="nav-dropdown z-[100] fixed">
+                      {item.submenu.map((sub) => (
+  <button
+    key={sub.label}
+    className="dropdown-link text-left w-full"
+    onClick={() => {
+      setOpenSubmenu(null);
+      navigate(sub.href!);
+    }}
+  >
+    {sub.label}
+    {sub.isNew && <span className="new-badge">NEW</span>}
+  </button>
+))}
+                          </div>
+                        </>
+                        ) : (
+                  <a href={item.href} className="nav-link block whitespace-nowrap text-xs xl:text-sm">
                     {item.label}
                   </Link>
                 )}
@@ -186,20 +209,78 @@ const Navbar = ({ isSticky }: NavbarProps) => {
       <AnimatePresence>
         {mobileMenuOpen && (
           <>
-            <motion.div className="mobile-menu-overlay" onClick={() => setMobileMenuOpen(false)} />
-            <motion.div className="mobile-menu">
-              <button onClick={() => setMobileMenuOpen(false)} className="text-white p-3">
-                <X />
-              </button>
-
-              {menuItems.map((item) => (
-                <div key={item.label}>
-                  {item.submenu ? (
-                    <>
-                      <button
-                        onClick={() => toggleSubmenu(item.label)}
-                        className="mobile-nav-link w-full flex justify-between"
-                      >
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="mobile-menu-overlay lg:hidden"
+              onClick={() => setMobileMenuOpen(false)}
+            />
+            <motion.div
+              initial={{ x: '-100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '-100%' }}
+              transition={{ type: 'tween', duration: 0.3 }}
+              className="mobile-menu lg:hidden"
+            >
+              <div className="mobile-menu-header">
+                <input
+                  type="text"
+                  placeholder="Search"
+                  className="flex-1 bg-white/10 border border-white/20 rounded px-3 py-2 text-white placeholder-white/60 text-sm"
+                />
+                <button
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-white ml-3"
+                  aria-label="Close menu"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
+              <nav>
+                {menuItems.map((item) => (
+                  <div key={item.label}>
+                    {item.submenu ? (
+                      <>
+                        <button
+                          onClick={() => toggleSubmenu(item.label)}
+                          className="mobile-nav-link w-full"
+                        >
+                          <span>{item.label}</span>
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs opacity-70">{item.submenu.length}</span>
+                            <ChevronRight
+                              className={`w-4 h-4 transition-transform ${
+                                openSubmenu === item.label ? 'rotate-90' : ''
+                              }`}
+                            />
+                          </div>
+                        </button>
+                        <AnimatePresence>
+                          {openSubmenu === item.label && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              className="mobile-submenu overflow-hidden"
+                            >
+                              {item.submenu.map((sub) => (
+                                <a
+                                  key={sub.label}
+                                  href={sub.isPdf ? '#' : sub.href} // prevent default for PDFs
+                                  onClick={sub.isPdf ? () => window.open(sub.href) : undefined} // open PDFs in new tab
+                                  className="mobile-submenu-link flex items-center justify-between"
+                                >
+                                  {sub.label}
+                                  {sub.isNew && <span className="new-badge">NEW</span>}
+                                </a>
+                              ))}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </>
+                    ) : (
+                      <a href={item.href} className="mobile-nav-link">
                         {item.label}
                         <ChevronRight className={`${openSubmenu === item.label ? "rotate-90" : ""}`} />
                       </button>

@@ -1,0 +1,149 @@
+.page-wrapper {
+    background-color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ================= HEADER ================= */
+.top-header {
+  display: flex;
+  align-items: center;
+  padding: 15px 40px;
+  background: #ffffff;
+}
+
+.logo {
+  width: 90px;
+  margin-right: 20px;
+}
+
+.header-text h1 {
+  font-size: 28px;
+  font-weight: bold;
+  color: #000;
+}
+
+.header-text p {
+  font-size: 17px;
+  color: #444;
+}
+/* 
+.main-content {
+    flex: 1;
+    padding: 30px 40px;
+} */
+
+.price-upload-title {
+    color: #e31e24; /* Red color from image */
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+/* CHANGE THIS CLASS */
+.login-container {
+    border: none;
+    width: 100%;           /* Change from max-width: 900px to 100% */
+    margin-top: 10px;      /* Adjust top spacing */
+    background-color: #fff;
+}
+
+/* Ensure the main content area allows full width */
+.main-content {
+    flex: 1;
+    padding: 20px 50px;    /* Matches the alignment of the text above */
+}
+
+/* Update the login header to span fully */
+.login-header {
+    background-color: #e9ecef;
+    text-align: center;
+    padding: 10px;
+    color: #3b4b8b;
+    font-weight: bold;
+    font-size: 14px;
+    border-bottom: none;
+    width: 100%;           /* Ensure it spans the full container */
+}
+
+.login-form {
+    padding: 40px 0;       /* Added more vertical padding */
+    display: flex;
+    flex-direction: column;
+    align-items: center;   /* Keeps the input rows centered inside the wide box */
+    width: 100%;
+}
+
+/* 1. Increase vertical space between the rows */
+.form-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px; /* Increased from 2px to 15px for vertical gap */
+}
+
+/* 2. Decrease horizontal space between label and input */
+.form-row label {
+    width: 90px;        /* Reduced from 150px to 90px to bring text closer to inputs */
+    color: #0000ff;
+    font-weight: bold;
+    font-size: 14px;
+    /* Optional: text-align: right; margin-right: 10px; -> adds even more precision */
+}
+
+/* 3. Adjust the buttons to align with the new input position */
+/* 1. Container for the buttons */
+.form-buttons {
+    margin-top: 8px;
+    margin-left: 90px;   /* Keep this aligned with your label width */
+    display: flex;
+    gap: 8px;           /* This adds the space between the buttons */
+}
+
+/* 2. Smaller Button styling */
+.form-buttons button {
+    /* flex: 1; */       /* REMOVE flex: 1 so they don't stretch */
+    width: 70px;         /* Decreased width */
+    height: 25px;        /* Decreased height */
+    border: 1px solid #999;
+    background: linear-gradient(to bottom, #ffffff 0%, #e0e0e0 100%);
+    font-size: 15px;     /* Slightly smaller font */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-row input {
+    width: 250px;
+    height: 22px;
+    border: 1px solid #999;
+}
+
+/* .form-buttons {
+    margin-top: 10px;
+    margin-left: 150px; 
+    display: flex;
+    width: 250px;
+} */
+
+/* .form-buttons button {
+    flex: 1;
+    height: 25px;
+    border: 1px solid #999;
+    background: linear-gradient(to bottom, #ffffff 0%, #e0e0e0 100%);
+    font-size: 13px;
+    cursor: pointer;
+} */
+
+.form-buttons button:active {
+    background: #d0d0d0;
+}
+
+.footer {
+  background: #0b2a52;
+  color: #ffffff;
+  text-align: center;
+  padding: 18px 10px;
+  font-size: 12px;
+}
