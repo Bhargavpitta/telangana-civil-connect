@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import Layout from "./components/Layout";
+
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Layout from "./components/Layout";
@@ -74,6 +74,7 @@ const App = () => {
 <Route path="copyright" element={<Copyright />} />
 <Route path="feedback" element={<Feedback />} />
 <Route path="help" element={<Help />} />
+<Route path="/rti/:type" element={<RTIPage />} />
 
     </Route>
 
@@ -107,15 +108,6 @@ const App = () => {
           <Route
   path="/videos/consumer-awareness"
   element={<VideoGallery />}/>
-
-  <Route
-  path="/rti/:type"
-  element={
-    <Layout>
-      <RTIPage />
-    </Layout>
-  }
-/>
 
           <Route path="/price/upload" element={<PriceUpload/>} />
           <Route path="/price/details" element={<PriceDetailsPage />} />
