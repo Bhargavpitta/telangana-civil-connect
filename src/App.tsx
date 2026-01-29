@@ -50,7 +50,6 @@ import Pensions from "./pages/Administration/Pension/Pensions";
 
 import CadreStrength from "./pages/Administration/CadreStrength/CadreStrength";
 
-import MedicalReimbursement from "./pages/Administration/Reimbursement/MedicalReimbursement";
 
 
 import Terms from "./pages/Policies/Terms";
@@ -95,14 +94,13 @@ const App = () => (
           <Route path="/administration/special-rules" element={<SpecialRules />} />
           <Route path="/administration/pension" element={<Pensions />} />
           <Route path="/administration/cadre" element={<CadreStrength />} />
-          <Route path="/administration/medical" element={<MedicalReimbursement />} />
 
                     <Route path="/terms" element={<Terms />} />
-<Route path="/privacy" element={<Privacy />} />
-<Route path="/hyperlinking" element={<Hyperlinking />} />
-<Route path="/copyright" element={<Copyright />} />
-<Route path="/feedback" element={<Feedback />} />
-<Route path="/help" element={<Help />} />
+                  <Route path="/privacy" element={<Privacy />} />
+                  <Route path="/hyperlinking" element={<Hyperlinking />} />
+                  <Route path="/copyright" element={<Copyright />} />
+                  <Route path="/feedback" element={<Feedback />} />
+                  <Route path="/help" element={<Help />} />
         
 
 
