@@ -1,4 +1,3 @@
-import LoginDropdown from '../LoginDropdown/LoginDropdown';
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronRight, ChevronDown } from "lucide-react";
@@ -108,6 +107,7 @@ const menuItems: MenuItem[] = [
       { label: 'Bharat Petroleum', href: 'https://bharatpetroleum.com/' },
     ] },
   { label: 'SOCIAL AUDIT REPORTS', href: '/audit' },
+  { label: 'LOGIN', href: '/login' },
   { label: 'CONTACTS', href: '/contacts' },
 ];
 interface NavbarProps {
@@ -171,29 +171,27 @@ const Navbar = ({ isSticky = false }: NavbarProps) => {
                     </button>
                     <div className="nav-dropdown z-[100] fixed">
                       {item.submenu.map((sub) => (
-                        <a
-                          key={sub.label}
-                          href={sub.isPdf ? '#' : sub.href}
-                          onClick={sub.isPdf ? () => window.open(sub.href) : undefined}
-                          className="dropdown-link flex items-center justify-between"
-                        >
-                          {sub.label}
-                          {sub.isNew && <span className="new-badge">NEW</span>}
-                        </a>
-                      ))}
-                    </div>
-                  </>
-                ) : (
+  <button
+    key={sub.label}
+    className="dropdown-link text-left w-full"
+    onClick={() => {
+      setOpenSubmenu(null);
+      navigate(sub.href!);
+    }}
+  >
+    {sub.label}
+    {sub.isNew && <span className="new-badge">NEW</span>}
+  </button>
+))}
+                          </div>
+                        </>
+                        ) : (
                   <a href={item.href} className="nav-link block whitespace-nowrap text-xs xl:text-sm">
                     {item.label}
                   </Link>
                 )}
               </li>
             ))}
-            {/* Add Login Dropdown */}
-            <li className="nav-item relative group">
-              <LoginDropdown />
-            </li>
           </ul>
           
           
