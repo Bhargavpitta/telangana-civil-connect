@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -73,7 +75,7 @@
 @layer components {
   /* Header Styles */
   .header-container {
-    @apply bg-white shadow-md sticky top-0 z-50 transition-shadow duration-300;
+    @apply bg-white shadow-md relative z-50 transition-shadow duration-300;
   }
 
   .header-container.scrolled {
@@ -245,6 +247,18 @@
   .scroll-to-top {
     @apply fixed bottom-6 right-6 w-12 h-12 bg-primary text-white rounded-full shadow-lg flex items-center justify-center transition-all duration-300 hover:bg-secondary z-40;
   }
+
+  /* ================= SUBMENU HOVER FIX ================= */
+
+.submenu-link {
+  @apply text-slate-700 text-sm transition-colors duration-200;
+}
+
+.submenu-link:hover {
+  background-color: #5bb2f5;
+  color: white;
+}
+
 }
 
 @layer utilities {
@@ -266,4 +280,79 @@
     );
     height: 6px;
   }
+/* Blinking NEW badge for Navbar dropdown */
+.new-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e60000;
+  color: white;
+  font-size: 10px;
+  font-weight: bold;
+  padding: 3px 8px;
+  margin-left: 8px;
+  border-radius: 3px;
+  line-height: 1;
+  animation: blinkNew 1s infinite;
 }
+
+@keyframes blinkNew {
+  0% { opacity: 1; }
+  50% { opacity: 0.2; }
+  100% { opacity: 1; }
+}
+
+}
+.navbar {
+  background: #1f4fa3;
+  padding: 10px 20px;
+  color: white;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.menu-item {
+  position: relative;
+}
+
+.menu-label {
+  cursor: pointer;
+}
+
+.menu-item input {
+  display: none;
+}
+
+.submenu {
+  display: none;
+  position: absolute;
+  background: white;
+  color: black;
+  list-style: none;
+  padding: 10px;
+  top: 30px;
+  min-width: 220px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.menu-item input:checked + .menu-label + .submenu {
+  display: block;
+}
+
+.submenu li {
+  padding: 8px;
+}
+
+.submenu li a {
+  text-decoration: none;
+  color: black;
+}
+
+.content {
+  padding: 20px;
+}
+
