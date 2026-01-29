@@ -1,9 +1,12 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, ChevronRight, ChevronDown } from "lucide-react";
+import { Link } from "react-router-dom";
+import { FaFacebookF, FaTwitter, FaGooglePlusG, FaLinkedinIn, FaWhatsapp } from "react-icons/fa";
+import { useLocation } from "react-router-dom";
+
 import { useNavigate } from "react-router-dom";
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, ChevronRight, ChevronDown } from 'lucide-react';
 import RTIPopup from "./RTIPopup";
-import "./Navbar.css";
 
 interface SubMenuItem {
   label: string;
@@ -19,37 +22,37 @@ interface MenuItem {
 }
 
 const menuItems: MenuItem[] = [
-  { label: 'HOME', href: '/' },
-  { label: 'ABOUT US', href: '/about' },
+  { label: "HOME", href: "/" },
+  { label: "ABOUT US", href: "/about" },
   {
-    label: 'ADMINISTRATION',
+    label: "ADMINISTRATION",
     submenu: [
-      { label: 'SCHEMES', href: '/administration/schemes' },
-      { label: 'ORGANISATION CHART', href: '/administration/org-chart' },
-      { label: 'SPECIAL RULES', href: '/administration/rules' },
-      { label: 'PENSION', href: '/administration/pension' },
-      { label: 'MEDICAL REIMBUSEMENT', href: '/administration/medical' },
-      { label: 'CADRE STRENGTH OF CIVIL SUPPLIES DEPT.', href: '/administration/cadre' },
+      { label: "SCHEMES", href: "/administration/schemes" },
+      { label: "ORGANISATION CHART", href: "/administration/org-chart" },
+      { label: "SPECIAL RULES", href: "/administration/rules" },
+      { label: "PENSION", href: "/administration/pension" },
+      { label: "MEDICAL REIMBUSEMENT", href: "/administration/medical" },
+      { label: "CADRE STRENGTH OF CIVIL SUPPLIES DEPT.", href: "/administration/cadre" },
     ],
   },
   {
-    label: 'WINGS',
+    label: "WINGS",
     submenu: [
-      { label: 'INFORMATION TECHNOLOGY (IT)', href: '/wings/it' },
-      { label: 'ADMINISTRATION', href: '/wings/admin' },
-      { label: 'FINANCE', href: '/wings/finance' },
-      { label: 'ENGINEERING', href: '/wings/engineering' },
-      { label: 'ENFORCEMENT', href: '/wings/enforcement' },
-      { label: 'TECHNICAL', href: '/wings/technical' },
-      { label: 'PETROLEUM PRODUCT', href: '/wings/petroleum' },
-      { label: 'PUBLIC DISTRIBUTION WING', href: '/wings/pds' },
-      { label: 'DEPARTMENT LOGIN', href: '/wings/login' },
-      { label: 'E-OFFICE LOGIN', href: '/wings/eoffice' },
-      { label: 'EVENT REQUESTING FORM', href: '/wings/event', isNew: true },
+      { label: "Information Technology (IT)", href: "/wings/it" },
+      { label: "Administration", href: "/wings/administration" },
+      { label: "Finance", href: "/wings/finance" },
+      { label: "Engineering", href: "/wings/engineering" },
+      { label: "Enforcement", href: "/wings/enforcement" },
+      { label: "Technical", href: "/wings/technical" },
+      { label: "Petroleum Product", href: "/wings/petroleum" },
+      { label: "Public Distribution Wing", href: "/wings/public-distribution" },
+      { label: "Department Login", href: "/wings/login" },
+      { label: "e-office Login", href: "/wings/eoffice" },
+      { label: "Event Requesting Form", href: "/wings/event", isNew: true },
     ],
   },
   {
-    label: 'CITIZEN SERVICES',
+    label: "CITIZEN SERVICES",
     submenu: [
       { label: 'HOW TO APPLY FOR A NEW RATION CARD',  href: '/pdfs/NFSARajpatra.pdf', isPdf: true },
       { label: 'GAZETTE OF TELANGANA FS RULES (27.2.16)', href: '/pdfs/Gazette of telanganaFS Rules.27.2.16.pdf', isPdf: true },
@@ -71,10 +74,10 @@ const menuItems: MenuItem[] = [
     ],
   },
   {
-    label: 'PRICE',
+    label: "PRICE",
     submenu: [
-      { label: 'PRICE UPLOAD LOGIN', href: '/price/upload' },
-      { label: 'PRICE DETAILS', href: '/price/details' },
+      { label: "PRICE UPLOAD LOGIN", href: "/price/upload" },
+      { label: "PRICE DETAILS", href: "/price/details" },
     ],
   },
   {
@@ -115,6 +118,23 @@ const Navbar = ({ isSticky = false }: NavbarProps) => {
   const navigate = useNavigate();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openSubmenu, setOpenSubmenu] = useState<string | null>(null);
+  const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const navRef = useRef<HTMLDivElement>(null);
+
+  const location = useLocation();
+  const isWingsPage = location.pathname.startsWith("/wings");
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+        setActiveMenu(null);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
 
   const toggleSubmenu = (label: string) => {
     setOpenSubmenu(openSubmenu === label ? null : label);
@@ -135,12 +155,19 @@ const Navbar = ({ isSticky = false }: NavbarProps) => {
         <div className="container mx-auto px-4">
           <ul className="flex flex-nowrap justify-center">
             {menuItems.map((item) => (
-              <li key={item.label} className="nav-item relative group">
+              <li
+  key={item.label}
+  className="relative"
+  onMouseEnter={() => setActiveMenu(item.label)}
+  onMouseLeave={() => setActiveMenu(null)}
+>
+  
+
                 {item.submenu ? (
                   <>
                     <button className="nav-link flex items-center gap-1 whitespace-nowrap text-xs xl:text-sm">
                       {item.label}
-                      <ChevronDown className="w-3 h-3" />
+                      <ChevronDown className="w-4 h-4" />
                     </button>
                     <div className="nav-dropdown z-[100] fixed">
                       {item.submenu.map((sub) => (
@@ -161,29 +188,24 @@ const Navbar = ({ isSticky = false }: NavbarProps) => {
                         ) : (
                   <a href={item.href} className="nav-link block whitespace-nowrap text-xs xl:text-sm">
                     {item.label}
-                  </a>
+                  </Link>
                 )}
               </li>
             ))}
           </ul>
+          
+          
         </div>
       </nav>
 
-      {/* Mobile Menu Button */}
+      {/* MOBILE NAVBAR  */}
       <div className="nav-container lg:hidden">
-        <div className="container mx-auto px-4">
-          <button
-            onClick={() => setMobileMenuOpen(true)}
-            className="flex items-center gap-2 text-white py-3"
-            aria-label="Open menu"
-          >
-            <Menu className="w-6 h-6" />
-            <span className="font-medium">Menu</span>
-          </button>
-        </div>
+        <button onClick={() => setMobileMenuOpen(true)} className="text-white p-3 flex items-center gap-2">
+          <Menu className="w-6 h-6" />
+          Menu
+        </button>
       </div>
 
-      {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <>
@@ -260,11 +282,23 @@ const Navbar = ({ isSticky = false }: NavbarProps) => {
                     ) : (
                       <a href={item.href} className="mobile-nav-link">
                         {item.label}
-                      </a>
-                    )}
-                  </div>
-                ))}
-              </nav>
+                        <ChevronRight className={`${openSubmenu === item.label ? "rotate-90" : ""}`} />
+                      </button>
+
+                      {openSubmenu === item.label &&
+                        item.submenu.map((sub) => (
+                          <Link key={sub.label} to={sub.href} className="mobile-submenu-link">
+                            {sub.label}
+                          </Link>
+                        ))}
+                    </>
+                  ) : (
+                    <Link to={item.href!} className="mobile-nav-link">
+                      {item.label}
+                    </Link>
+                  )}
+                </div>
+              ))}
             </motion.div>
           </>
         )}
