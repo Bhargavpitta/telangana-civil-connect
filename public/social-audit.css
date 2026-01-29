@@ -1,0 +1,472 @@
+/*
+ * Social Audit Management System
+ * Government Portal CSS - External Stylesheet Only
+ * No inline CSS, No JavaScript, No frameworks
+ */
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, Tahoma, sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #000000;
+    background-color: #ffffff;
+}
+
+/* Header Section */
+.page-header {
+    width: 100%;
+    background-color: #ffffff;
+    padding: 15px 0;
+    border-bottom: 1px solid #cccccc;
+}
+
+.header-content {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.logo-left, .logo-right {
+    flex: 0 0 150px;
+    text-align: center;
+}
+
+.title-center {
+    flex: 1;
+    text-align: center;
+}
+
+.logo {
+    height: 80px;
+    width: auto;
+}
+
+.title-center h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000000;
+}
+
+.blue-bar {
+    background-color: var(--primary-blue);
+    padding: 8px 0;
+    margin-top: 10px;
+}
+
+.blue-bar-text {
+    width: 1200px;
+    margin: 0 auto;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    padding: 0 20px;
+}
+
+/* Main Container */
+.main-container {
+    width: 1200px;
+    margin: 0 auto;
+    padding: 20px 20px 40px 20px;
+}
+
+/* Title and Login Section */
+.title-login-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    gap: 30px;
+}
+
+.title-area {
+    flex: 1;
+}
+
+.page-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #000000;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.login-panel {
+    flex: 0 0 280px;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: 1px solid #cccccc;
+}
+
+.login-form .form-group {
+    margin-bottom: 15px;
+}
+
+.login-form label {
+    display: block;
+    font-size: 13px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #000000;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #999999;
+    font-size: 13px;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.btn-green {
+    flex: 1;
+    padding: 8px 15px;
+    font-size: 13px;
+    font-weight: bold;
+    background-color: #00cc00;
+    color: #ffffff;
+    border: 1px solid #009900;
+    cursor: pointer;
+}
+
+.btn-green:hover {
+    background-color: #009900;
+}
+
+.reset-link {
+    text-align: center;
+}
+
+.reset-password {
+    color: #ff0000;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.reset-password:hover {
+    text-decoration: underline;
+}
+
+/* Table Section */
+.table-section {
+    margin-bottom: 40px;
+}
+
+.pmgkay-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin-bottom: 30px;
+}
+
+.pmgkay-table th,
+.pmgkay-table td {
+    border: 1px solid #000000;
+    padding: 8px 12px;
+    text-align: left;
+}
+
+.pmgkay-table th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+    text-align: center;
+}
+
+.pmgkay-table td:nth-child(1) {
+    text-align: center;
+    width: 60px;
+}
+
+.pmgkay-table td:nth-child(2) {
+    width: 120px;
+    font-weight: bold;
+}
+
+.total-row {
+    background-color: #ffffcc;
+    font-weight: bold;
+}
+
+.total-row td {
+    border-top: 2px solid #000000;
+}
+
+/* Dashboard Section */
+.dashboard-section {
+    margin: 30px 0;
+    text-align: center;
+}
+
+.dashboard-heading {
+    color: #ff0000;
+    font-size: 18px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 10px 0;
+}
+
+/* Table Heading */
+.table-heading {
+    color: #00cc00;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 0 15px 0;
+}
+
+/* Table Container for Horizontal Scrolling */
+.table-container {
+    overflow-x: auto;
+    border: 1px solid #000000;
+    margin: 15px 0;
+}
+
+/* Social Audit Table */
+.social-audit-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    min-width: 1100px;
+}
+
+.social-audit-table th,
+.social-audit-table td {
+    border: 1px solid #000000;
+    padding: 6px 8px;
+    text-align: center;
+}
+
+.social-audit-table th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+.social-audit-table td:nth-child(1) {
+    text-align: center;
+    width: 40px;
+}
+
+.social-audit-table td:nth-child(2) {
+    text-align: left;
+    width: 100px;
+    font-weight: bold;
+}
+
+.social-audit-table td:nth-child(3) {
+    text-align: left;
+    text-transform: uppercase;
+    width: 150px;
+}
+
+.social-audit-table td:nth-child(4) {
+    text-align: center;
+    width: 100px;
+    font-weight: bold;
+}
+
+.social-audit-table td:nth-child(5),
+.social-audit-table td:nth-child(6),
+.social-audit-table td:nth-child(7),
+.social-audit-table td:nth-child(8),
+.social-audit-table td:nth-child(9),
+.social-audit-table td:nth-child(10),
+.social-audit-table td:nth-child(11),
+.social-audit-table td:nth-child(12) {
+    text-align: center;
+    width: 70px;
+}
+
+/* Regular Audit Table */
+.regular-audit-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    min-width: 1200px;
+}
+
+.regular-audit-table th,
+.regular-audit-table td {
+    border: 1px solid #000000;
+    padding: 6px 8px;
+    text-align: center;
+}
+
+.regular-audit-table th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+}
+
+.regular-audit-table td:nth-child(1) {
+    text-align: center;
+    width: 40px;
+}
+
+.regular-audit-table td:nth-child(2) {
+    text-align: left;
+    width: 100px;
+    font-weight: bold;
+}
+
+.regular-audit-table td:nth-child(3) {
+    text-align: left;
+    text-transform: uppercase;
+    width: 150px;
+}
+
+.regular-audit-table td:nth-child(4) {
+    text-align: center;
+    width: 100px;
+    font-weight: bold;
+}
+
+.regular-audit-table td:nth-child(5),
+.regular-audit-table td:nth-child(6),
+.regular-audit-table td:nth-child(7),
+.regular-audit-table td:nth-child(8),
+.regular-audit-table td:nth-child(9),
+.regular-audit-table td:nth-child(10),
+.regular-audit-table td:nth-child(11),
+.regular-audit-table td:nth-child(12),
+.regular-audit-table td:nth-child(13) {
+    text-align: center;
+    width: 70px;
+}
+
+/* Footer */
+.page-footer {
+    background-color: var(--primary-blue);
+    color: #ffffff;
+    padding: 15px 0;
+    margin-top: 40px;
+}
+
+.footer-content {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    font-size: 12px;
+}
+
+.copyright {
+    font-weight: bold;
+}
+
+.developer-info {
+    font-weight: bold;
+}
+
+/* Responsive Design */
+@media (max-width: 1280px) {
+    .header-content,
+    .main-container,
+    .blue-bar-text,
+    .footer-content {
+        width: 95%;
+        padding: 0 15px;
+    }
+    
+    .title-login-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    
+    .login-panel {
+        width: 100%;
+        max-width: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .logo-left,
+    .logo-right,
+    .title-center {
+        flex: none;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .title-center h1 {
+        font-size: 20px;
+    }
+    
+    .page-title {
+        font-size: 18px;
+    }
+    
+    .dashboard-heading {
+        font-size: 16px;
+    }
+    
+    .table-heading {
+        font-size: 14px;
+    }
+    
+    .social-audit-table,
+    .regular-audit-table {
+        font-size: 10px;
+    }
+    
+    .social-audit-table th,
+    .social-audit-table td,
+    .regular-audit-table th,
+    .regular-audit-table td {
+        padding: 4px 5px;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .table-container {
+        font-size: 11px;
+    }
+}
+
+/* Print Styles */
+@media print {
+    .page-header,
+    .login-panel,
+    .page-footer {
+        display: none;
+    }
+    
+    .social-audit-table,
+    .regular-audit-table {
+        font-size: 9px;
+    }
+    
+    .table-container {
+        overflow-x: visible;
+    }
+    
+    .main-container {
+        padding: 10px;
+    }
+}

@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FP Shop Management System</title>
+    <link rel="stylesheet" href="fpshop-management.css">
+    <link rel="stylesheet" href="../src/styles/theme.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="page-header">
+        <div class="header-content">
+            <div class="logo-left">
+                <img src="../src/assets/civilLogo.png" alt="Telangana Civil Supplies Department Logo" class="logo">
+            </div>
+            <div class="title-center">
+                <h1>Telangana Civil Supplies Department</h1>
+            </div>
+            <div class="logo-right">
+                <img src="../public/center.jpg" alt="Telangana Rising Logo" class="logo">
+            </div>
+        </div>
+        <div class="blue-bar">
+            <p class="blue-bar-text">Telangana Civil Supplies Department</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Page Title -->
+        <div class="page-title-section">
+            <h2 class="page-title">FP Shop Management System</h2>
+        </div>
+
+        <!-- Alert/Notice Section -->
+        <div class="alert-section">
+            <p class="alert-text">Delete Option activated in MRO Login...</p>
+            <p class="alert-text">INCHARGE DEALER – The Data Entry Form for FPSHOP Dealers...</p>
+            <p class="alert-text">Regular FP Shop Dealer Detail Form and Incharge Dealer Detail Forms...</p>
+        </div>
+
+        <!-- Koil Information Section -->
+        <div class="koil-section">
+            <h3 class="section-heading">Koil Information</h3>
+            <div class="table-container">
+                <table class="koil-table">
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>District Name</th>
+                            <th>No. of WSD</th>
+                            <th>2018 No. of Rec</th>
+                            <th>2019 No. of Rec</th>
+                            <th>2020 No. of Rec</th>
+                            <th>2021 No. of Rec</th>
+                            <th>2022 No. of Rec</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dummy data – will be replaced by backend API -->
+                        <tr>
+                            <td>1</td>
+                            <td>HYDERABAD</td>
+                            <td>125</td>
+                            <td>120</td>
+                            <td>118</td>
+                            <td>115</td>
+                            <td>112</td>
+                            <td>110</td>
+                            <td>795</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>MEDAK</td>
+                            <td>89</td>
+                            <td>85</td>
+                            <td>82</td>
+                            <td>80</td>
+                            <td>78</td>
+                            <td>75</td>
+                            <td>589</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>RANGAREDDY</td>
+                            <td>156</td>
+                            <td>150</td>
+                            <td>148</td>
+                            <td>145</td>
+                            <td>142</td>
+                            <td>140</td>
+                            <td>1021</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>MAHBUBNAGAR</td>
+                            <td>98</td>
+                            <td>95</td>
+                            <td>92</td>
+                            <td>90</td>
+                            <td>88</td>
+                            <td>85</td>
+                            <td>648</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>NIZAMABAD</td>
+                            <td>76</td>
+                            <td>72</td>
+                            <td>70</td>
+                            <td>68</td>
+                            <td>65</td>
+                            <td>62</td>
+                            <td>473</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>KARIMNAGAR</td>
+                            <td>112</td>
+                            <td>108</td>
+                            <td>105</td>
+                            <td>102</td>
+                            <td>100</td>
+                            <td>98</td>
+                            <td>725</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>WARANGAL</td>
+                            <td>85</td>
+                            <td>82</td>
+                            <td>80</td>
+                            <td>78</td>
+                            <td>75</td>
+                            <td>72</td>
+                            <td>572</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>KHAMMAM</td>
+                            <td>93</td>
+                            <td>90</td>
+                            <td>88</td>
+                            <td>85</td>
+                            <td>82</td>
+                            <td>80</td>
+                            <td>618</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>ADILABAD</td>
+                            <td>67</td>
+                            <td>65</td>
+                            <td>62</td>
+                            <td>60</td>
+                            <td>58</td>
+                            <td>55</td>
+                            <td>467</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>MANKATHA</td>
+                            <td>54</td>
+                            <td>52</td>
+                            <td>50</td>
+                            <td>48</td>
+                            <td>45</td>
+                            <td>42</td>
+                            <td>341</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td colspan="2"><strong>Total</strong></td>
+                            <td><strong>955</strong></td>
+                            <td><strong>919</strong></td>
+                            <td><strong>895</strong></td>
+                            <td><strong>868</strong></td>
+                            <td><strong>840</strong></td>
+                            <td><strong>822</strong></td>
+                            <td><strong>6259</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- FPSHOP Data Entry Status Table -->
+        <div class="table-section">
+            <div class="table-container">
+                <table class="status-table">
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>User Name</th>
+                            <th>District Name</th>
+                            <th>No. of FPSHops</th>
+                            <th>No. of FPSHops Data Entered</th>
+                            <th>No. of Incharge FPSHop Data Entered</th>
+                            <th>No. of FPSHop Data Pending</th>
+                            <th>Percentage (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dummy data – will be replaced by backend API -->
+                        <tr>
+                            <td>1</td>
+                            <td>mro1</td>
+                            <td>HYDERABAD</td>
+                            <td>125</td>
+                            <td>120</td>
+                            <td>115</td>
+                            <td>5</td>
+                            <td>96%</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>mro2</td>
+                            <td>MEDAK</td>
+                            <td>89</td>
+                            <td>85</td>
+                            <td>80</td>
+                            <td>4</td>
+                            <td>95%</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>mro3</td>
+                            <td>RANGAREDDY</td>
+                            <td>156</td>
+                            <td>150</td>
+                            <td>145</td>
+                            <td>6</td>
+                            <td>96%</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>mro4</td>
+                            <td>MAHBUBNAGAR</td>
+                            <td>98</td>
+                            <td>95</td>
+                            <td>90</td>
+                            <td>3</td>
+                            <td>97%</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>mro5</td>
+                            <td>NIZAMABAD</td>
+                            <td>76</td>
+                            <td>72</td>
+                            <td>68</td>
+                            <td>4</td>
+                            <td>95%</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>mro6</td>
+                            <td>KARIMNAGAR</td>
+                            <td>112</td>
+                            <td>108</td>
+                            <td>105</td>
+                            <td>4</td>
+                            <td>96%</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>mro7</td>
+                            <td>WARANGAL</td>
+                            <td>85</td>
+                            <td>82</td>
+                            <td>78</td>
+                            <td>3</td>
+                            <td>96%</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>mro8</td>
+                            <td>KHAMMAM</td>
+                            <td>93</td>
+                            <td>90</td>
+                            <td>85</td>
+                            <td>3</td>
+                            <td>97%</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>mro9</td>
+                            <td>ADILABAD</td>
+                            <td>67</td>
+                            <td>65</td>
+                            <td>62</td>
+                            <td>2</td>
+                            <td>97%</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>mro10</td>
+                            <td>MANKATHA</td>
+                            <td>54</td>
+                            <td>52</td>
+                            <td>50</td>
+                            <td>2</td>
+                            <td>96%</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td colspan="3"><strong>Total</strong></td>
+                            <td><strong>955</strong></td>
+                            <td><strong>919</strong></td>
+                            <td><strong>870</strong></td>
+                            <td><strong>36</strong></td>
+                            <td><strong>96%</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Dashboard - Group Insurance -->
+        <div class="dashboard-section">
+            <h3 class="dashboard-heading">DASH BOARD FOR GROUP INSURANCE</h3>
+        </div>
+
+        <!-- Group Insurance Table -->
+        <div class="table-section">
+            <div class="table-container">
+                <table class="insurance-table">
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>District Name</th>
+                            <th>No. of FPSHops</th>
+                            <th>No. of FPSHop Group Insurance Data Entered</th>
+                            <th>No. of Death Details Data Entered</th>
+                            <th>Total Data Entered</th>
+                            <th>No. of FPSHop Data Pending</th>
+                            <th>Percentage (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Dummy data – will be replaced by backend API -->
+                        <tr>
+                            <td>1</td>
+                            <td>HYDERABAD</td>
+                            <td>125</td>
+                            <td>120</td>
+                            <td>5</td>
+                            <td>125</td>
+                            <td>0</td>
+                            <td>100%</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>MEDAK</td>
+                            <td>89</td>
+                            <td>85</td>
+                            <td>2</td>
+                            <td>87</td>
+                            <td>2</td>
+                            <td>98%</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>RANGAREDDY</td>
+                            <td>156</td>
+                            <td>150</td>
+                            <td>3</td>
+                            <td>153</td>
+                            <td>3</td>
+                            <td>98%</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>MAHBUBNAGAR</td>
+                            <td>98</td>
+                            <td>95</td>
+                            <td>1</td>
+                            <td>96</td>
+                            <td>2</td>
+                            <td>98%</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>NIZAMABAD</td>
+                            <td>76</td>
+                            <td>72</td>
+                            <td>2</td>
+                            <td>74</td>
+                            <td>2</td>
+                            <td>97%</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>KARIMNAGAR</td>
+                            <td>112</td>
+                            <td>108</td>
+                            <td>4</td>
+                            <td>112</td>
+                            <td>0</td>
+                            <td>100%</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>WARANGAL</td>
+                            <td>85</td>
+                            <td>82</td>
+                            <td>3</td>
+                            <td>85</td>
+                            <td>0</td>
+                            <td>100%</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>KHAMMAM</td>
+                            <td>93</td>
+                            <td>90</td>
+                            <td>2</td>
+                            <td>92</td>
+                            <td>1</td>
+                            <td>99%</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>ADILABAD</td>
+                            <td>67</td>
+                            <td>65</td>
+                            <td>1</td>
+                            <td>66</td>
+                            <td>1</td>
+                            <td>99%</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>MANKATHA</td>
+                            <td>54</td>
+                            <td>52</td>
+                            <td>1</td>
+                            <td>53</td>
+                            <td>1</td>
+                            <td>98%</td>
+                        </tr>
+                        <tr class="total-row">
+                            <td colspan="2"><strong>Total</strong></td>
+                            <td><strong>955</strong></td>
+                            <td><strong>919</strong></td>
+                            <td><strong>24</strong></td>
+                            <td><strong>943</strong></td>
+                            <td><strong>12</strong></td>
+                            <td><strong>99%</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Panel -->
+    <div class="login-panel">
+        <div class="login-header">
+            <h4>Login</h4>
+        </div>
+        <form class="login-form">
+            <div class="form-group">
+                <label for="username">UserName</label>
+                <input type="text" id="username" name="username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password">
+            </div>
+            <div class="button-group">
+                <button type="submit" class="btn-green">Login</button>
+                <button type="reset" class="btn-green">Clear</button>
+            </div>
+            <div class="reset-link">
+                <a href="#" class="reset-password">Reset password</a>
+            </div>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        <div class="footer-content">
+            <div class="copyright">
+                Copyright © 2020 Telangana Civil Supplies Department
+            </div>
+            <div class="developer-info">
+                Designed and Developed by In-house
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

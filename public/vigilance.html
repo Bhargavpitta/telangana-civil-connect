@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vigilance Committee Management System</title>
+    <link rel="stylesheet" href="vigilance.css">
+    <link rel="stylesheet" href="../src/styles/theme.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="page-header">
+        <div class="header-content">
+            <div class="logo-left">
+                <img src="../src/assets/civilLogo.png" alt="Telangana State Civil Supplies Department Logo" class="logo">
+            </div>
+            <div class="title-center">
+                <h1>Telangana State Civil Supplies Department</h1>
+            </div>
+        </div>
+        <div class="blue-bar">
+            <p class="blue-bar-text">Telangana State Civil Supplies Department</p>
+        </div>
+    </header>
+
+    <!-- Main Title -->
+    <div class="main-title">
+        <h2>Vigilance Committee Management System</h2>
+    </div>
+
+    <!-- Urgent Notice -->
+    <div class="urgent-notice">
+        <p>Urgent Requirement - Please furnish the Data Immediately without fail .....</p>
+    </div>
+
+    <!-- Content Area -->
+    <div class="content-area">
+        <!-- Left Side - Main Content -->
+        <div class="left-content">
+            <!-- Vigilance Committee Report Section -->
+            <div class="section-title">
+                <h3>Vigilance Committee Report</h3>
+            </div>
+            
+            <!-- Vigilance Committee Report Table -->
+            <div class="table-container">
+                <table class="committee-report-table">
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>User Id</th>
+                            <th>District Name</th>
+                            <th>District</th>
+                            <th>Mandal level</th>
+                            <th>GP Level</th>
+                            <th>FP Shop Level</th>
+                        </tr>
+                    </thead>
+                    <tbody id="report-table-body">
+                        <!-- Rows will be populated by TypeScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Vigilance Committee Meeting Section -->
+            <div class="section-title">
+                <h3>Vigilance Committee Meeting</h3>
+            </div>
+            
+            <!-- Vigilance Committee Meeting Table -->
+            <div class="table-container">
+                <table class="committee-meeting-table">
+                    <thead>
+                        <tr>
+                            <th>S.No</th>
+                            <th>User Id</th>
+                            <th>District Name</th>
+                            <th>District</th>
+                            <th>Mandal level</th>
+                            <th>GP Level</th>
+                            <th>FP Shop Level</th>
+                        </tr>
+                    </thead>
+                    <tbody id="meeting-table-body">
+                        <!-- Rows will be populated by TypeScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Right Side - Login Panel -->
+        <div class="login-panel">
+            <div class="login-header">
+                <h4>Login</h4>
+                <svg class="key-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M15.5 12.5c.2-.2.5-.3.7-.5 1.2-.8 2-2 2-3.5a4 4 0 1 0-8 0c0 1.5.8 2.7 2 3.5.2.2.5.3.7.5.2.2.3.5.5.7.8 1.2 2 2 3.5 2s2.7-.8 3.5-2c.2-.2.3-.5.5-.7z"></path>
+                    <path d="M10 10v.5"></path>
+                </svg>
+            </div>
+            <form class="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password">
+                </div>
+                <div class="button-group">
+                    <button type="submit" class="btn-green">Login</button>
+                    <button type="reset" class="btn-green">Clear</button>
+                </div>
+                <div class="reset-link">
+                    <a href="#" class="reset-password">Reset password</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        <div class="footer-content">
+            <div class="copyright">
+                Copyright @ 2020. Telangana State Civil Supplies Department
+            </div>
+            <div class="developer-info">
+                Designed and Developed by In-house
+            </div>
+        </div>
+    </footer>
+
+    <script src="vigilance.js"></script>
+</body>
+</html>

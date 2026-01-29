@@ -1,0 +1,43 @@
+.page {
+  width: 95%;
+  margin: auto;
+  font-family: Arial, sans-serif;
+}
+
+.title {
+  text-align: center;
+  color: var(--primary-blue);
+  margin: 15px 0;
+}
+
+.gov-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.gov-table th {
+  background: #d9edf7;
+  border: 1px solid #000;
+  padding: 6px;
+}
+
+.gov-table td {
+  border: 1px solid #000;
+  padding: 5px;
+  text-align: center;
+}
+
+.green {
+  background: #2ecc71;
+  color: white;
+}
+
+.yellow {
+  background: #f1c40f;
+}
+
+.red {
+  background: #e74c3c;
+  color: white;
+}
