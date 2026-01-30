@@ -9,6 +9,7 @@ interface SubMenuItem {
   href: string;
   isNew?: boolean;
   isPdf?: boolean;
+  isExternal?: boolean;
 }
 
 interface MenuItem {
@@ -56,8 +57,30 @@ const menuItems: MenuItem[] = [
   {
     label: 'CITIZEN SERVICES',
     submenu: [
-      { label: 'RATION STATUS', href: '/' },
-      { label: 'EPOS TRANSACTIONS', href: '/' },
+      { label: 'HOW TO APPLY FOR A NEW RATION CARD', href: '/pdfs/NFSARajpatra.pdf', isPdf: true },
+      { label: 'GAZETTE OF TELANGANA FS RULES (27.2.16)', href: '/pdfs/Gazette of telanganaFS Rules.27.2.16.pdf', isPdf: true },
+      { label: 'HOW TO APPLY FOR RATION CARD', href: '/pdfs/HOW TO APPLY FOR RATION CARD.pdf', isPdf: true },
+      { label: 'HOW TO LODGE A CONSUMER COMPLAINT', href: '/pdfs/HOW TO LODGE A CONSUMER COMPLAINT.pdf', isPdf: true },
+      { label: 'KNOW YOUR RATION CARD DETAILS', href: "/services/ration-status" },
+      { label: 'KNOW YOUR EPOS TRANSACTIONS', href: "/services/epos-transactions" },
+      { label: 'KNOW YOUR FPSHOP DETAILS', href: '/services/fpshop' },
+      { label: 'KNOW YOUR NEAREST FPSHOP', href: '/services/nearest-fpshop' },
+      { label: 'CITIZEN CHARTER', href: '/pdfs/1583 CITIZEN CHARTER Dated 13-07-2022.pdf', isPdf: true },
+      { label: 'CONSUMER AFFAIRS EVENT REQUESTING FORM', href: '/services/event-form', isNew: true },
+    ],
+  },
+  { label: 'CIRCULARS', href: '/circulars' },
+  {
+    label: 'VIDEO GALLERY',
+    submenu: [
+      { label: 'Consumer Awareness Videos', href: '/videos/consumer-awareness' },
+    ],
+  },
+  {
+    label: 'PRICE',
+    submenu: [
+      { label: 'PRICE UPLOAD LOGIN', href: '/price/upload' },
+      { label: 'PRICE DETAILS', href: '/price/details' },
     ],
   },
    { label: "TENDERS", href: "/" },
@@ -74,6 +97,28 @@ const menuItems: MenuItem[] = [
 
   { label: 'RTI ACTS', href: '/rti' },
   { label: "DOWNLOADS", href: "/downloads" },
+  {
+    label: 'IMPORTANT LINKS',
+    submenu: [
+      { label: 'Electronic Point of Sale(ePoS)', href: 'https://epos.telangana.gov.in/ePoS/login.html', isExternal: true },
+      { label: 'Electronic Public Distribution System (epds)', href: 'https://epds.telangana.gov.in/FoodSecurityAct/', isExternal: true },
+      { label: 'Supply Chain Management System(SCM)', href: 'https://scm.telangana.gov.in/SCM/login.html', isExternal: true },
+      { label: 'Online Procurement Management System(OPMS)', href: 'https://pps.telangana.gov.in/View/Login.aspx', isExternal: true },
+      { label: 'Financial Management Systemsepds(FMS)', href: 'https://tscscfms.cgg.gov.in/Login.do', isExternal: true },
+      { label: 'Deepam', href: 'https://epds.telangana.gov.in/FoodSecurityAct/', isExternal: true },
+      { label: 'Annavitran Portal', href: '/links/c' },
+      { label: 'Consumer', href: '/links/' },
+      { label: 'National Portal of India', href: 'https://india.gov.in/', isExternal: true },
+      { label: 'Telangana Portal', href: 'https://www.telangana.gov.in/', isExternal: true },
+      { label: 'Food Corporation of India', href: 'https://fci.gov.in/', isExternal: true },
+      { label: 'Ministry of Consumer Affairs Food & Public Distribution,Govt. of India', href: '/links/' },
+      { label: 'Hindustan Petroleum', href: 'https://hindustanpetroleum.com/', isExternal: true },
+      { label: 'Indian Oil Corporation', href: 'https://iocl.com/', isExternal: true },
+      { label: 'Bharat Petroleum', href: 'https://bharatpetroleum.com/', isExternal: true },
+    ],
+  },
+  { label: 'SOCIAL AUDIT REPORTS', href: '/audit' },
+  { label: 'LOGIN', href: '/login' },
   { label: 'CONTACTS', href: '/contacts' },
 ];
 

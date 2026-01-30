@@ -5,7 +5,7 @@ import telanganaLogo from "@/assets/telangana-logo.jpeg";
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaSnapchatGhost, FaWhatsapp } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 
-const Layout = ({ children }: { children: React.ReactNode }) => {
+const Layout = () => {
   return (
     <>
       {/* HEADER */}
@@ -79,7 +79,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         </div>
       </header>
 
-      {/* NAVBAR */}
+      {/* Navigation */}
       <Navbar isSticky={false} />
 
       {/* PAGE CONTENT */}

@@ -1,0 +1,276 @@
+/*  PAGE WRAPPER  */
+.it-page,
+.wing-page {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #ffffff;
+  padding-bottom: 40px;
+}
+
+
+.wings-label {
+  color: #d62828;
+  font-weight: bold;
+  margin: 20px 0 10px 20px;
+  font-size: 18px;
+}
+
+
+.it-title-bar,
+.wing-title-bar {
+  background-color: #eeeeee;
+  text-align: center;
+  padding: 10px;
+  margin: 0 20px 20px 20px;
+  font-weight: bold;
+  color: #2f4f88;
+  border: 1px solid #ddd;
+}
+
+/*  CONTENT BOX  */
+.it-content-box,
+.wing-content {
+  margin: 0 20px;
+  padding: 10px 0;
+  color: #444;
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+
+/* Headings */
+.wing-content h3 {
+  color: #2f4f88;
+  margin-top: 20px;
+}
+
+.wing-content h4 {
+  color: #333;
+  margin-top: 15px;
+}
+
+/* Lists */
+.wing-content ul {
+  padding-left: 20px;
+}
+
+
+
+/*  DIVIDER  */
+.it-divider {
+  border-top: 1px solid #ddd;
+  margin: 20px;
+}
+
+/* TABLE STYLE */
+.share-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.share-table td {
+  border: 1px solid #ddd;
+  padding: 6px;
+  font-size: 14px;
+}
+
+
+.image-marquee {
+  overflow: hidden;
+  width: calc(100% - 40px);
+  margin: 0 20px 20px 20px;
+  border-radius: 4px;
+}
+
+.marquee-track {
+  display: flex;
+  gap: 10px;
+  width: max-content;
+  animation: marqueeScroll 35s linear infinite;
+}
+
+.marquee-track img {
+  height: 200px;
+  width: auto;
+  border-radius: 4px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Animation */
+@keyframes marqueeScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* Pause on hover */
+.image-marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+
+
+.image-scroll-container {
+  overflow-x: auto;
+  white-space: nowrap;
+  margin: 15px 20px;
+  padding-bottom: 10px;
+}
+
+.image-scroll-container::-webkit-scrollbar {
+  height: 8px;
+}
+
+.image-scroll-container::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 4px;
+}
+
+.image-scroll {
+  display: inline-flex;
+  gap: 10px;
+}
+
+.image-scroll img {
+  height: 220px;
+  width: auto;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+
+.new-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 22px;
+  min-width: 44px;
+  padding: 0 10px;
+  background-color: #e63946;
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  border-radius: 4px;
+  margin-left: 8px;
+  line-height: 1;
+  letter-spacing: 0.5px;
+}
+
+/* Blinking NEW Badge */
+.blinking-new {
+  color: #ff0000;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  animation: blinkRed 1s steps(2, start) infinite;
+}
+
+@keyframes blinkRed {
+  to {
+    visibility: hidden;
+  }
+}
+
+
+/*  FEEDBACK FORM  */
+
+.feedback-form {
+  max-width: 800px;
+}
+
+.feedback-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.feedback-form input,
+.feedback-form textarea {
+  border: 1px solid #888;
+  padding: 6px;
+  font-size: 14px;
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.feedback-form textarea {
+  width: 50%;
+  resize: none;
+}
+
+.feedback-btn {
+  margin-top: 8px;
+  padding: 6px 20px;
+  background: #eee;
+  border: 1px solid #888;
+  cursor: pointer;
+}
+
+.feedback-btn:hover {
+  background: #ddd;
+}
+
+/* ENGINEERING IMAGE SLIDER  */
+
+.image-slider {
+  overflow: hidden;
+  width: 100%;
+  margin: 25px 0;
+}
+
+.slider-track {
+  display: flex;
+  gap: 15px;
+  width: max-content;
+}
+
+/* Image size same everywhere */
+.slider-track img {
+  width: 420px;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+
+.left-scroll {
+  animation: bounceLeft 18s ease-in-out infinite alternate;
+}
+
+@keyframes bounceLeft {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(calc(-100% + 100vw)); }
+}
+
+
+.right-scroll {
+  animation: bounceRight 18s ease-in-out infinite alternate;
+}
+
+@keyframes bounceRight {
+  0%   { transform: translateX(calc(-100% + 100vw)); }
+  100% { transform: translateX(0); }
+}
+
+/* THIRD SCROLL */
+.bounce-scroll {
+  animation: bounceMid 22s ease-in-out infinite alternate;
+}
+
+@keyframes bounceMid {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(calc(-100% + 100vw)); }
+}
+
+
+
+
+
+
+
+
+
+
+
+
