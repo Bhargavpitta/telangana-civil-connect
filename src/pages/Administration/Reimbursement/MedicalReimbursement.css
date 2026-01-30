@@ -1,0 +1,41 @@
+.medical-container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 20px;
+    min-height: 70vh;
+    font-family: Arial, sans-serif;
+}
+
+.medical-title {
+    text-align: center;
+    color: #a00000;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.medical-box {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 30px;
+    text-align: center;
+}
+
+.medical-box p {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.medical-btn {
+    background: #1a4ed8;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+}
+
+.medical-btn:hover {
+    background: #003c9e;
+}

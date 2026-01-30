@@ -1,0 +1,70 @@
+.body_content {
+    max-width: 1200px;
+    margin: 30px auto;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f3f3f3;
+    padding: 20px;
+    border-radius: 6px;
+}
+
+/* SCHEMES LABEL */
+.station_head h4 {
+    color: red;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+}
+
+/* GOVERNMENT PANEL BOX */
+.telephone_emails {
+    background: #ffffff;
+    border: 1px solid #dcdcdc;
+    border-radius: 3px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    padding: 0;
+    overflow: hidden;
+}
+
+/* PANEL HEADER BAR */
+.telephone_emails h1 {
+    background: #e6e6e6;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+    color: #003366;
+    text-transform: uppercase;
+}
+
+/* CONTENT */
+.telephone_emails p {
+    padding: 10px 15px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* LIST STYLE LIKE GOVT SITE */
+.telephone_emails ul {
+    margin: 5px 30px 10px;
+    font-size: 14px;
+    color: #333;
+}
+
+.telephone_emails li {
+    margin-bottom: 5px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .body_content {
+        padding: 10px;
+    }
+
+    .telephone_emails p,
+    .telephone_emails li {
+        font-size: 13px;
+    }
+}

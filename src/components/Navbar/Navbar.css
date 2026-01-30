@@ -1,4 +1,6 @@
-navbar.css       /* Navbar container */
+navbar.css
+
+/* Navbar container */
 .navbar {
   background-color: #1f4fa3;
   padding: 12px 20px;
@@ -50,7 +52,7 @@ navbar.css       /* Navbar container */
 }
 
 /* Show submenu when checkbox is checked */
-.menu-item input:checked + .menu-label + .submenu {
+.menu-item input:checked+.menu-label+.submenu {
   display: block;
 }
 
@@ -83,4 +85,21 @@ navbar.css       /* Navbar container */
     position: static;
     box-shadow: none;
   }
+}
+
+/* Make dropdown items full width */
+.nav-dropdown .dropdown-link {
+  display: block !important;
+  /* IMPORTANT */
+  width: 100% !important;
+  /* IMPORTANT */
+  text-align: left;
+  padding: 10px 16px;
+  color: #1a4ed8 !important;
+  background: white;
+}
+
+.nav-dropdown .dropdown-link:hover {
+  background: #1a4ed8 !important;
+  color: white !important;
 }

@@ -1,63 +1,51 @@
-import { motion } from 'framer-motion';
-import { ArrowUp } from 'lucide-react';
+import { motion } from "framer-motion";
+import { ArrowUp } from "lucide-react";
+import { Link } from "react-router-dom";
+import "./Footer.css";
 
 const policyLinks = [
-  { text: 'Terms and Conditions', href: '/terms' },
-  { text: 'Privacy Policy', href: '/privacy' },
-  { text: 'Hyperlinking Policy', href: '/hyperlinking' },
-  { text: 'Copyright Policy', href: '/copyright' },
-  { text: 'Feedback', href: '/feedback' },
-  { text: 'Help', href: '/help' },
+  { text: "Terms and Conditions", path: "/terms" },
+  { text: "Privacy Policy", path: "/privacy" },
+  { text: "Hyperlinking Policy", path: "/hyperlinking" },
+  { text: "Copyright Policy", path: "/copyright" },
+  { text: "Feedback", path: "/feedback" },
+  { text: "Help", path: "/help" },
+
 ];
 
 const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
     <>
-      <footer className="footer-container text-center">
-        {/* Policy Links */}
+      <footer className="footer-container">
         <div className="footer-links">
-          {policyLinks.map((link, index) => (
-            <span key={link.text} className="flex items-center">
-              <a href={link.href} className="footer-link">
+          {policyLinks.map((link, i) => (
+            <span key={link.text}>
+              <Link to={link.path} className="footer-link">
                 {link.text}
-              </a>
-              {index < policyLinks.length - 1 && (
-                <span className="text-white/40 mx-2">|</span>
-              )}
+              </Link>
+              {i < policyLinks.length - 1 && <span className="footer-sep"> | </span>}
             </span>
           ))}
         </div>
 
-        {/* Content Info */}
-        <div className="py-4 text-white/80 text-sm">
-          <p>
-            Content on this website is published and managed by Civil Supplies Department, H.O - Telangana.
-          </p>
+        <div className="footer-text">
+          Content on this website is published and managed by Civil Supplies Department, H.O - Telangana.
         </div>
 
-        {/* Copyright */}
-        <div className="py-3 border-t border-white/10 text-white/60 text-sm">
-          <p>
-            COPYRIGHT ©2018 Civil Supplies Department
-          </p>
+        <div className="footer-copy">
+          COPYRIGHT ©2018 Civil Supplies Department
         </div>
       </footer>
 
-      {/* Scroll to Top Button */}
       <motion.button
         onClick={scrollToTop}
-        className="scroll-to-top"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        aria-label="Scroll to top"
+        className="scroll-top-btn"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
       >
-        <ArrowUp className="w-6 h-6" />
+        <ArrowUp />
       </motion.button>
     </>
   );
