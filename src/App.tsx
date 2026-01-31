@@ -56,6 +56,7 @@ import CadreStrength from "./pages/Administration/CadreStrength/CadreStrength";
 
 
 import React from "react";
+import AboutUs from "./pages/AboutUs";
 
 const queryClient = new QueryClient();
 
@@ -98,6 +99,8 @@ const App = () => {
               <Route path="administration/rules" element={<SpecialRules />} />
               <Route path="administration/pension" element={<Pensions />} />
               <Route path="administration/cadre" element={<CadreStrength />} />
+
+              <Route path="about-us" element={<AboutUs />} />
 
 
               {/* Footer */}
