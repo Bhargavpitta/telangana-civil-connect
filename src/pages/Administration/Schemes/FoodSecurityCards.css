@@ -1,0 +1,72 @@
+/* MAIN PAGE WRAPPER LIKE GOV SITE */
+.body_content {
+    max-width: 1100px;
+    margin: 20px auto;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+/* RED SCHEMES TITLE */
+.station_head h4 {
+    color: red;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+/* WHITE CONTENT BOX */
+.telephone_emails {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+/* GREY TITLE BAR */
+.telephone_emails h1 {
+    background: #e5e5e5;
+    padding: 12px;
+    font-size: 16px;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+    margin: 0;
+}
+
+/* CONTENT TEXT */
+.scheme-content {
+    padding: 15px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #222;
+    text-align: justify;
+}
+
+/* BLUE SUB HEADINGS */
+.scheme-content h3 {
+    color: #003399;
+    border-bottom: 2px solid #003399;
+    display: inline-block;
+    padding-bottom: 3px;
+    margin-top: 10px;
+}
+
+/* LINKS STYLE LIKE GOV SITE */
+.scheme-content a {
+    color: #003399;
+    text-decoration: none;
+}
+
+.scheme-content a:hover {
+    text-decoration: underline;
+}
+
+/* OPTIONAL INNER BOX */
+.stationps_details {
+    background: white;
+    padding: 10px;
+    border-radius: 3px;
+}

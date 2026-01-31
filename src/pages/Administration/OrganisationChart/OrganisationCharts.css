@@ -1,0 +1,56 @@
+/* MAIN PAGE CONTAINER */
+.body_content {
+    max-width: 1200px;
+    margin: 20px auto;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f4f4f4;
+    padding: 15px;
+}
+
+/* ADMINISTRATION RED TITLE */
+.station_head h4 {
+    color: red;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* WHITE GOV PANEL */
+.telephone_emails {
+    background: white;
+    border: 1px solid #ddd;
+    padding: 0;
+}
+
+/* GREY HEADER BAR */
+.telephone_emails h1 {
+    background: #e5e5e5;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+}
+
+/* CENTER CONTENT ONLY */
+.org-content-full {
+    padding: 15px;
+    background: white;
+}
+
+/* RED CENTER TITLE LIKE GOV SITE */
+.org-content-full h2 {
+    text-align: center;
+    color: #cc0000;
+    font-size: 14px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* BIG PDF VIEWER */
+.pdf-viewer-full {
+    width: 100%;
+    height: 700px;
+    border: 1px solid #999;
+    background: #000;
+}
