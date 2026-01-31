@@ -27,7 +27,13 @@ const menuItems: MenuItem[] = [
       { label: 'ORGANISATION CHART', href: '/administration/org-chart' },
       { label: 'SPECIAL RULES', href: '/administration/rules' },
       { label: 'PENSION', href: '/administration/pension' },
-      { label: 'MEDICAL REIMBUSEMENT', href: '/administration/medical' },
+      // { label: 'MEDICAL REIMBUSEMENT', href: '/administration/medical' },
+      {
+  label: 'MEDICAL REIMBURSEMENT',
+  href: 'https://dme.telangana.gov.in/',
+  isExternal: true
+},
+
       { label: 'CADRE STRENGTH OF CIVIL SUPPLIES DEPT.', href: '/administration/cadre' },
     ],
   },
