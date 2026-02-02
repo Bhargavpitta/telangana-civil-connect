@@ -40,6 +40,18 @@ import PriceDetailsPage from "./PriceDetailsPage";
 import SocialAuditPage from "./SocialAuditPage";
 import PriceUpload from "./PriceUpload";
 
+/* LOGIN PAGES */
+import FpsDealerCommission from "./pages/Login/FpsDealerCommission";
+import SocialAuditManagement from "./pages/Login/SocialAuditManagement";
+import FpShopManagement from "./pages/Login/FpShopManagement";
+import PriceMonitoringPage from "./pages/Login/PriceMonitoringPage";
+import GunnyReporting from "./pages/Login/GunnyReporting";
+import VigilancePage from "./pages/Login/VigilancePage";
+import StatisticsLogin from "./pages/Login/StatisticsLogin";
+import LoginDepartmentLogin from "./pages/Login/DepartmentLogin";
+import Section6A from "./pages/Login/Section6A";
+import PaddyDashboard from "./pages/Login/PaddyDashboard";
+
 /* ADMIN */
 import Schemes from "./pages/Administration/Schemes/Schemes";
 import FoodSecurityCards from "./pages/Administration/Schemes/FoodSecurityCards";
@@ -132,6 +144,18 @@ const App = () => {
             <Route path="/price/upload" element={<PriceUpload />} />
             <Route path="/price/details" element={<PriceDetailsPage />} />
             <Route path="/audit" element={<SocialAuditPage />} />
+
+            {/* LOGIN ROUTES */}
+            <Route path="/login/fps-dealer" element={<FpsDealerCommission />} />
+            <Route path="/login/social-audit" element={<SocialAuditManagement />} />
+            <Route path="/login/fps-management" element={<FpShopManagement />} />
+            <Route path="/login/price-monitor" element={<PriceMonitoringPage />} />
+            <Route path="/login/gunny-bag" element={<GunnyReporting />} />
+            <Route path="/login/vigilance" element={<VigilancePage />} />
+            <Route path="/login/statistics" element={<StatisticsLogin />} />
+            <Route path="/login/department" element={<LoginDepartmentLogin />} />
+            <Route path="/login/6a-case" element={<Section6A />} />
+            <Route path="/login/paddy-allotment" element={<PaddyDashboard />} />
 
             <Route path="*" element={<NotFound />} />
 

@@ -1,0 +1,334 @@
+/* Section 6A Management System - Government Portal Styling */
+/* External CSS file only - No inline styles, No frameworks */
+
+.section6a-container {
+  background-color: #f3f3f3;
+  min-height: 100vh;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.main-header {
+  width: 100%;
+  background: #ffffff;
+  text-align: center;
+  border-bottom: 1px solid #ccc;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 40px;
+}
+
+.dept-title {
+  font-family: "Times New Roman", serif;
+  font-size: 30px;
+  font-weight: bold;
+  color: #000;
+  flex: 1;
+  text-align: center;
+}
+
+.logo {
+  height: 70px;
+  object-fit: contain;
+}
+
+.left-logo {
+  margin-right: 20px;
+}
+
+.right-logo {
+  margin-left: 20px;
+}
+
+.blue-bar {
+  background: #0b87e3;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blue-title {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+}
+
+/* Section Title Strip */
+.section-title-strip {
+  background-color: #08c0c9;
+  border: 2px solid #b000ff;
+  text-align: center;
+  padding: 20px;
+  width: 800px;
+  margin: 20px auto;
+  border-radius: 4px;
+}
+
+.section-title-strip h2 {
+  color: white;
+  font-size: 36px;
+  font-family: cursive;
+  font-style: italic;
+  margin: 0;
+}
+
+/* Main Title */
+.main-title {
+  text-align: center;
+  margin: 20px auto;
+  width: 1100px;
+}
+
+.main-title h3 {
+  color: #0c2c6b;
+  font-size: 34px;
+  font-family: Georgia, "Times New Roman", serif;
+  margin: 0;
+}
+
+/* Main Content */
+.main-content {
+  display: flex;
+  justify-content: space-between;
+  width: 1100px;
+  margin: 20px auto;
+  gap: 30px;
+}
+
+/* Dashboard Table */
+.dashboard-section {
+  flex: 1;
+}
+
+.dashboard-table {
+  width: 460px;
+  border: 2px solid black;
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+.dashboard-header {
+  color: red;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+}
+
+.dashboard-table th {
+  background-color: yellow;
+  color: black;
+  border: 1px solid black;
+  padding: 8px;
+  font-size: 14px;
+}
+
+.username-header {
+  color: purple;
+}
+
+.district-header {
+  color: magenta;
+}
+
+.dashboard-table td {
+  border: 1px solid gray;
+  padding: 8px;
+  font-size: 14px;
+  height: 28px;
+  vertical-align: middle;
+}
+
+.username-data {
+  color: purple;
+}
+
+.district-data {
+  color: magenta;
+}
+
+/* Login Panel */
+.login-panel {
+  width: 300px;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  height: auto !important;
+  min-height: unset !important;
+  padding-bottom: 16px;
+}
+
+.login-header {
+  background-color: #0b8de3;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+.login-header h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.login-body {
+  padding: 20px;
+}
+
+.login-panel form {
+  margin-bottom: 0;
+}
+
+.login-panel .login-body {
+  padding-bottom: 10px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.reset-password {
+  text-align: right;
+  margin-bottom: 15px;
+}
+
+.reset-password a {
+  color: red;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btn-login, .btn-clear {
+  background-color: #28a745; /* Green */
+  color: white;
+}
+
+.btn-login:hover, .btn-clear:hover {
+  background-color: #218838;
+}
+
+/* Footer */
+.section6a-footer {
+  background-color: #1089e5;
+  width: 100%;
+  margin-top: 40px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+}
+
+.footer-content {
+  width: 1100px;
+  margin: 0 auto;
+  padding: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  font-size: 16px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .header-content,
+  .main-title,
+  .main-content,
+  .footer-content {
+    width: 95%;
+  }
+  
+  .section-title-strip {
+    width: 95%;
+  }
+}
+
+@media (max-width: 900px) {
+  .main-content {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .dashboard-table {
+    width: 100%;
+    max-width: 460px;
+  }
+  
+  .login-panel {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 600px) {
+  .header-content {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .logo-left,
+  .title-center,
+  .logo-right {
+    width: 100%;
+  }
+  
+  .title-center h1 {
+    font-size: 24px;
+  }
+  
+  .blue-strip {
+    justify-content: center;
+  }
+  
+  .section-title-strip h2 {
+    font-size: 24px;
+  }
+  
+  .main-title h3 {
+    font-size: 24px;
+  }
+  
+  .section6a-footer {
+    height: 100px;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    font-size: 14px;
+  }
+}
