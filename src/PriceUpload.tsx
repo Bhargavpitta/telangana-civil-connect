@@ -37,17 +37,17 @@ const PriceUpload: React.FC = () => {
       </header>
       <Navbar isSticky={false} />
 
-      <div className="main-content">
+      <div className="main-con">
         <h2 className="price-upload-title">PRICE UPLOAD</h2>
 
-        <div className="login-container">
-          <div className="login-header">PRICE UPLOAD LOGIN</div>
-          <div className="login-form">
-            <div className="form-row">
+        <div className="login-cont">
+          <div className="login-head">PRICE UPLOAD LOGIN</div>
+          <div className="login-fo">
+            <div className="form-r">
               <label>User Name</label>
               <input type="text" />
             </div>
-            <div className="form-row">
+            <div className="form-r">
               <label>Password</label>
               <input type="password" />
             </div>

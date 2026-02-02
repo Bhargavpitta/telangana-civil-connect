@@ -146,3 +146,107 @@
   border-top: 1px solid #999;
   height: auto; 
 }
+
+/* ================= RESPONSIVE ================= */
+
+/* -------- TABLET (max-width: 992px) -------- */
+@media (max-width: 992px) {
+
+  .top-header {
+    padding: 15px 20px;
+  }
+
+  .logo {
+    width: 70px;
+  }
+
+  .header-text h1 {
+    font-size: 22px !important;
+  }
+
+  .header-text p {
+    font-size: 15px !important;
+  }
+
+  .social-icons {
+    gap: 10px;
+    font-size: 16px;
+  }
+
+  .breadcrumb {
+    margin-left: 20px;
+    font-size: 18px;
+  }
+
+  .price-details-box {
+    width: 90%;
+    font-size: 18px;
+  }
+
+  .box-title {
+    font-size: 18px;
+  }
+}
+
+
+/* -------- MOBILE (max-width: 600px) -------- */
+@media (max-width: 600px) {
+
+  /* HEADER STACK */
+  .top-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+    gap: 10px;
+  }
+
+  .header-left {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .logo {
+    width: 60px;
+    margin-bottom: 5px;
+  }
+
+  .header-text h1 {
+    font-size: 18px !important;
+  }
+
+  .header-text p {
+    font-size: 13px !important;
+  }
+
+  .social-icons {
+    align-self: flex-end;
+    font-size: 16px;
+  }
+
+  /* BREADCRUMB */
+  .breadcrumb {
+    margin-left: 15px;
+    font-size: 16px;
+  }
+
+  /* PRICE BOX */
+  .price-details-box {
+    width: 95%;
+    font-size: 16px;
+  }
+
+  .box-title {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  /* ROWS */
+  .box-row {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .arrow {
+    font-size: 12px;
+  }
+}
