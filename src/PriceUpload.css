@@ -42,7 +42,7 @@
 }
 
 /* CHANGE THIS CLASS */
-.login-container {
+.login-con {
     border: none;
     width: 100%;           /* Change from max-width: 900px to 100% */
     margin-top: 10px;      /* Adjust top spacing */
@@ -50,13 +50,13 @@
 }
 
 /* Ensure the main content area allows full width */
-.main-content {
+.main-con {
     flex: 1;
     padding: 20px 50px;    /* Matches the alignment of the text above */
 }
 
 /* Update the login header to span fully */
-.login-header {
+.login-head {
     background-color: #e9ecef;
     text-align: center;
     padding: 10px;
@@ -67,7 +67,7 @@
     width: 100%;           /* Ensure it spans the full container */
 }
 
-.login-form {
+.login-fo {
     padding: 40px 0;       /* Added more vertical padding */
     display: flex;
     flex-direction: column;
@@ -76,14 +76,14 @@
 }
 
 /* 1. Increase vertical space between the rows */
-.form-row {
+.form-r {
     display: flex;
     align-items: center;
     margin-bottom: 15px; /* Increased from 2px to 15px for vertical gap */
 }
 
 /* 2. Decrease horizontal space between label and input */
-.form-row label {
+.form-r label {
     width: 90px;        /* Reduced from 150px to 90px to bring text closer to inputs */
     color: #0000ff;
     font-weight: bold;
@@ -114,7 +114,22 @@
     justify-content: center;
 }
 
-.form-row input {
+.form-buttons button {
+    width: 70px;
+    height: 25px;
+    border: 1px solid #999;
+    background: linear-gradient(to bottom, #ffffff 0%, #e0e0e0 100%);
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;              /* ADD THIS */
+    opacity: 1;               /* ADD THIS */
+}
+
+
+.form-r input {
     width: 250px;
     height: 22px;
     border: 1px solid #999;
@@ -146,4 +161,97 @@
   text-align: center;
   padding: 18px 10px;
   font-size: 12px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* Tablets */
+@media (max-width: 992px) {
+  .top-header {
+    padding: 15px 20px;
+  }
+
+  .header-text h1 {
+    font-size: 22px;
+  }
+
+  .header-text p {
+    font-size: 15px;
+  }
+
+  .main-con {
+    padding: 20px;
+  }
+
+  .logo {
+    width: 70px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .top-header {
+    flex-direction: column;
+    text-align: center;
+    padding: 15px;
+  }
+
+  .logo {
+    width: 60px;
+    margin-bottom: 10px;
+  }
+
+  .header-text h1 {
+    font-size: 18px;
+  }
+
+  .header-text p {
+    font-size: 14px;
+  }
+
+  .price-upload-title {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .main-con {
+    padding: 15px;
+  }
+
+  .login-fo {
+    padding: 20px 10px;
+  }
+
+  .form-r {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .form-r label {
+    width: 100%;
+    font-size: 13px;
+  }
+
+  .form-r input {
+    width: 100%;
+    height: 30px;
+  }
+
+  .form-buttons {
+    margin-left: 0;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .form-buttons button {
+    width: 80px;
+    height: 30px;
+    font-size: 13px;
+  }
+
+  .footer {
+    font-size: 11px;
+    padding: 12px 5px;
+  }
 }

@@ -112,7 +112,7 @@ const SocialAuditPage: React.FC = () => {
       </div>
 
       <div className="content">
-        <h1 className="main-title"><b>Social Audit Management System</b></h1>
+        <h1 className="main-ti"><b>Social Audit Management System</b></h1>
 
         {/* TOP SECTION: Phase Table + Login Side by Side */}
         <div className="top-section">
@@ -171,8 +171,8 @@ const SocialAuditPage: React.FC = () => {
         </div>
 
         {/* DASHBOARD TABLES: These span full width below the top section */}
-        <div className="dashboard-section">
-          <h3 className="red">
+        <div className="dashboard-sec">
+          <h3 className="redd">
             DASH BOARD FOR PMGKAY PHASE AUDIT - PMGKAY-(1,2,3,4,5,6,7)
           </h3>
 
