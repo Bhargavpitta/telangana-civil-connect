@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronRight, ChevronDown } from 'lucide-react';
+import LoginDropdown from '@/pages/Login/LoginDropdown';
 
 interface SubMenuItem {
   label: string;
@@ -14,6 +15,7 @@ interface SubMenuItem {
 interface MenuItem {
   label: string;
   href?: string;
+  component?: React.ReactNode;
   submenu?: SubMenuItem[];
 }
 
@@ -119,7 +121,7 @@ const menuItems: MenuItem[] = [
     ],
   },
   { label: 'SOCIAL AUDIT REPORTS', href: '/audit' },
-  { label: 'LOGIN', href: '/login' },
+  { label: 'LOGIN', component: <LoginDropdown /> },
   { label: 'CONTACTS', href: '/contacts' },
 ];
 
@@ -206,6 +208,10 @@ const Navbar = ({ isSticky = false }: NavbarProps) => {
                       ))}
                     </div>
                   </>
+                ) : item.component ? (
+                  <div className="nav-button block whitespace-nowrap py-3 px-2 text-[10px] xl:text-xs 2xl:text-sm font-medium w-full">
+                    {item.component}
+                  </div>
                 ) : (
                   <button
                     onClick={() => item.href && handleNavigation(item.href)}

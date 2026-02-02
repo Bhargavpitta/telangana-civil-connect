@@ -1,0 +1,297 @@
+/* FP Shop Styles */
+.fps-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.fps-header {
+  background: linear-gradient(to right, #1e3a8a, #1d4ed8, #1e3a8a);
+  padding: 1rem 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.fps-logo-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.fps-logo {
+  height: 60px;
+}
+
+.fps-title {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.fps-blue-bar {
+  background-color: #2563eb;
+  color: white;
+  text-align: center;
+  padding: 0.5rem;
+  font-weight: 500;
+}
+
+.fps-header-right {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.5rem;
+}
+
+.fps-header-logo {
+  height: 40px;
+}
+
+.fps-login-box {
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  padding: 0;
+  max-width: 400px;
+  margin: 2rem auto;
+  border: 1px solid #e2e8f0;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.fps-login-title {
+  color: #1e3a8a;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+  text-align: center;
+  padding: 1rem;
+  border-bottom: 2px solid #2563eb;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.fps-input-group {
+  margin: 0 1.5rem 1rem 1.5rem;
+}
+
+.fps-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+.fps-input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.fps-button-group {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 1.5rem;
+}
+
+.fps-login-btn, .fps-clear-btn {
+  flex: 1;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.fps-login-btn {
+  background-color: #16a34a;
+  color: white;
+}
+
+.fps-login-btn:hover {
+  background-color: #15803d;
+}
+
+.fps-clear-btn {
+  background-color: #64748b;
+  color: white;
+}
+
+.fps-clear-btn:hover {
+  background-color: #475569;
+}
+
+.fps-reset-link {
+  display: block;
+  text-align: center;
+  color: #2563eb;
+  text-decoration: none;
+  font-size: 0.875rem;
+  margin: 0 1.5rem 1.5rem 1.5rem;
+}
+
+.fps-reset-link:hover {
+  text-decoration: underline;
+}
+
+.fps-main-content {
+  flex: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  width: 100%;
+}
+
+.fps-main-heading {
+  color: #1e3a8a;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 0 2rem 0;
+}
+
+.fps-alerts {
+  background-color: #fef3c7;
+  border: 1px solid #f59e0b;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+
+.fps-alert {
+  color: #92400e;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.fps-alert:last-child {
+  margin-bottom: 0;
+}
+
+.fps-instructions {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.fps-section-title {
+  color: #1e3a8a;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+}
+
+.fps-instruction-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.fps-instruction-table th,
+.fps-instruction-table td {
+  padding: 0.75rem;
+  text-align: left;
+  border: 1px solid #e2e8f0;
+}
+
+.fps-instruction-table th {
+  background-color: #1e3a8a;
+  color: white;
+  font-weight: 600;
+}
+
+.fps-instruction-table td {
+  background-color: white;
+}
+
+.fps-instruction-table tr:nth-child(even) td {
+  background-color: #f8fafc;
+}
+
+.fps-instruction-table tr:hover td {
+  background-color: #eff6ff;
+}
+
+.fps-district-section, .fps-mandal-section {
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.fps-subtitle {
+  color: #64748b;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0 0 1rem 0;
+  text-align: center;
+}
+
+.fps-main-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.fps-main-table th,
+.fps-main-table td {
+  padding: 0.75rem;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+}
+
+.fps-main-table th {
+  background-color: #1e3a8a;
+  color: white;
+  font-weight: 600;
+}
+
+.fps-main-table td {
+  background-color: white;
+}
+
+.fps-main-table tr:nth-child(even) td {
+  background-color: #f8fafc;
+}
+
+.fps-main-table tr:hover td {
+  background-color: #eff6ff;
+}
+
+.green {
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.yellow {
+  color: #ca8a04;
+  font-weight: 600;
+}
+
+.red {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.fps-main-table tfoot tr {
+  background-color: #1e3a8a !important;
+  color: white !important;
+  font-weight: bold;
+}
+
+.fps-main-table tfoot td {
+  background-color: #1e3a8a !important;
+  color: white !important;
+}
