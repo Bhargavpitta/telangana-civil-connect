@@ -9,7 +9,7 @@ import Layout from "./components/Layout";
 import Index from "./pages/Index";
 
 import IT from "./pages/wings/IT";
-import Administration from "./pages/wings/Administration";
+import AdministrationWing from "./pages/wings/AdministrationWing";
 import Finance from "./pages/wings/Finance";
 import Engineering from "./pages/wings/Engineering";
 import Enforcement from "./pages/wings/Enforcement";
@@ -89,7 +89,7 @@ const App = () => {
 
               {/* WINGS */}
               <Route path="wings/it" element={<IT />} />
-              <Route path="wings/administration" element={<Administration />} />
+              <Route path="wings/administration" element={<AdministrationWing />} />
               <Route path="wings/finance" element={<Finance />} />
               <Route path="wings/engineering" element={<Engineering />} />
               <Route path="wings/enforcement" element={<Enforcement />} />
