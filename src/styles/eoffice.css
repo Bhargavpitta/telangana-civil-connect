@@ -5,11 +5,9 @@
   color: white;
   display: flex;
   flex-direction: column;
-
-  position: relative;   /* ⭐ ADD THIS */
-  z-index: 0;           /* ⭐ ADD THIS */
 }
 
+/* TITLE */
 .eoffice-title {
   font-size: 32px;
   color: red;
@@ -17,6 +15,7 @@
   font-weight: bold;
 }
 
+/* MARQUEE */
 .eoffice-marquee {
   background: yellow;
   color: red;
@@ -24,53 +23,115 @@
   font-weight: bold;
   padding: 8px 10px;
   text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
+.marquee-text {
+  display: inline-block;
+  animation: slideNotice 2s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes slideNotice {
+  0%   { transform: translateX(-100px); }
+  100% { transform: translateX(100px); }
+}
+
+/* CENTER LOGIN */
 .login-container {
   display: flex;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 40px;
 }
 
+/* LOGIN TABLE */
 .login-table {
   border-collapse: collapse;
   background: #0b6b2a;
   border: 2px solid #003300;
   width: 420px;
+  table-layout: fixed;   /* prevents shifting */
 }
 
+/* Column widths */
+.login-table td:nth-child(1) { width: 35%; }
+.login-table td:nth-child(2) { width: 45%; }
+.login-table td:nth-child(3) { width: 20%; }
+
+/* Header */
 .login-table th {
-  background: #0b6b2a;
+  background-color: #145c2c;
+  color: white;
   border: 1px solid #003300;
-  padding: 8px;
+  padding: 6px;
   font-size: 18px;
 }
 
+/* Cells */
 .login-table td {
   border: 1px solid #003300;
-  padding: 6px;
+  padding: 4px 6px;
   font-size: 15px;
+  vertical-align: middle;
+  background-color: #0b6b2a;
+  color: white;
 }
 
+.login-table td:first-child {
+  font-weight: bold;
+}
+
+/* Inputs */
 .login-table input {
   width: 100%;
-  padding: 4px;
+  height: 24px;
+  padding: 2px 4px;
+  box-sizing: border-box;
+  background: white;
+  color: black;
+  border: 1px solid #666;
 }
 
+/* Captcha */
 .captcha-box {
   background: #6fa8dc;
   color: black;
   text-align: center;
   font-weight: bold;
-  padding: 6px;
+  padding: 4px;
+  height: 28px;
+  line-height: 20px;
 }
 
-.login-btn, .reset-btn, .refresh-btn {
+/* Buttons */
+.login-btn,
+.reset-btn,
+.refresh-btn {
+  background-color: #e6e6e6;
+  border: 1px solid #333;
   padding: 4px 10px;
-  margin-right: 6px;
+  font-size: 14px;
   cursor: pointer;
+  color: black;
 }
 
+.login-btn:hover,
+.reset-btn:hover,
+.refresh-btn:hover {
+  background-color: #d0d0d0;
+}
+
+.btn-row {
+  text-align: center;
+  padding: 8px 0;
+}
+
+.refresh-btn {
+  width: 80px;
+}
+
+/* Footer */
 .eoffice-footer {
   margin-top: auto;
   border-top: 6px solid cyan;
@@ -79,66 +140,4 @@
   padding: 10px 20px;
   font-size: 14px;
   color: magenta;
-}
-
-.eoffice-marquee {
-  background: yellow;
-  color: red;
-  font-size: 26px;
-  font-weight: bold;
-  padding: 8px 10px;
-  overflow: hidden;
-  white-space: nowrap;
-  position: relative;
-
-  z-index: -1;   /* ⭐ THIS IS THE REAL FIX */ 
-}
-
-
-/* scrolling text */
-.marquee-text {
-  display: inline-block;
-  position: relative;
-  animation: slideNotice 2s ease-in-out infinite alternate;
-
-  pointer-events: none;
-}
-
-.marquee-text {
-  pointer-events: none;
-}
-
-
-@keyframes slideNotice {
-  0%   { transform: translateX(-130px); }
-  100% { transform: translateX(130px); }
-}
-
-
-.login-table input {
-  width: 100%;
-  padding: 4px;
-
-  color: black;        
-  background: white; 
-}
-
-.eoffice-marquee {
-  position: relative;
-  z-index: 1;
-}
-
-.marquee-text {
-  pointer-events: none;
-}
-
-/* Ensure login form is clickable */
-.login-container {
-  position: relative;
-  z-index: 10;
-}
-
-
-.eoffice-marquee {
-  pointer-events: none;
 }

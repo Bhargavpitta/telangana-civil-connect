@@ -43,9 +43,15 @@ const EOffice = () => {
     navigate("/eoffice-error");
   };
 
+  const handleReset = () => {
+    setUsername("");
+    setPassword("");
+    setCaptchaInput("");
+    refreshCaptcha();
+  };
+
   return (
     <div className="eoffice-wrapper">
-
       <div className="eoffice-title">e-Office System</div>
 
       <div className="eoffice-marquee">
@@ -105,28 +111,22 @@ const EOffice = () => {
             <tr>
               <td></td>
               <td className="captcha-box">{captchaCode}</td>
-              <td>
-                <button className="refresh-btn" onClick={refreshCaptcha}>Refresh</button>
+              <td style={{ textAlign: "center" }}>
+                <button className="refresh-btn" onClick={refreshCaptcha}>
+                  Refresh
+                </button>
               </td>
             </tr>
 
             <tr>
-              <td></td>
-              <td className="btn-row">
-                <button className="login-btn" onClick={handleLogin}>Login</button>
-                <button
-                  className="reset-btn"
-                  onClick={() => {
-                    setUsername("");
-                    setPassword("");
-                    setCaptchaInput("");
-                    refreshCaptcha();
-                  }}
-                >
+              <td colSpan={3} className="btn-row">
+                <button className="login-btn" onClick={handleLogin}>
+                  Login
+                </button>
+                <button className="reset-btn" onClick={handleReset}>
                   Reset
                 </button>
               </td>
-              <td></td>
             </tr>
           </tbody>
         </table>
