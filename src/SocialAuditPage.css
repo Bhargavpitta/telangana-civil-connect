@@ -30,7 +30,7 @@
 }
 
 .header-left h1 {
-  font-size: 34px !important;
+  font-size: 36px !important;
   color: #2ca7d8;
   font-weight: 500;
 }
@@ -38,7 +38,6 @@
 .header-right img {
   height: 130px;
   width: 130px !important;
-  width: auto;
 }
 
 /* BLUE STRIP */
@@ -62,7 +61,7 @@
   font-size: 28px;
 }
 
-/* TOP SECTION: Flex layout for Table 1 and Login */
+/* TOP SECTION */
 .top-section {
   display: flex;
   justify-content: space-between;
@@ -72,7 +71,7 @@
 }
 
 .phase-table-container {
-  flex: 1; /* Takes up remaining space */
+  flex: 1;
 }
 
 /* TABLES STYLING */
@@ -97,10 +96,18 @@ tfoot td {
   background-color: #f9f9f9;
 }
 
+/* RESPONSIVE TABLE WRAPPER */
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 15px;
+}
+
 /* LOGIN BOX */
 .login-box {
   width: 320px;
-  flex-shrink: 0; /* Prevents login box from shrinking */
+  flex-shrink: 0;
 }
 
 .login-header {
@@ -116,7 +123,7 @@ tfoot td {
   position: absolute;
   right: 10px;
   top: 50%;
- transform: translateY(-50%) rotate(-230deg);
+  transform: translateY(-50%) rotate(-230deg);
   font-size: 18px;
 }
 
@@ -175,27 +182,40 @@ tfoot td {
   font-size: 14px;
 }
 
-.clear-btn {
-  background: #5cb85c; /* same as image */
-}
-
-/* DASHBOARD SECTION (Below Top Section) */
+/* DASHBOARD SECTION */
 .dashboard-sec {
   width: 100%;
 }
 
+/* Changed here: Started from left, width 100% */
+/* Find this section in your CSS */
 .full-width {
-  width: 80%;
+  width: 80%;       /* Change from 100% to 80% */
+  margin-left: 0;   /* Keeps it at the left edge */
+  margin-right: auto; /* Ensures it doesn't center */
 }
 
+/* Also ensure the title above the table stays left-aligned */
 .redd {
   color: red;
   margin: 30px 0 10px 0;
   font-size: 25px;
   text-transform: uppercase;
+  text-align: left; /* Keep this left to match the table */
 }
 
-/* Nested dashboard headers matching your screenshot */
+.large-table {
+  min-width: 800px; /* Forces scrollbar instead of squishing columns on small screens */
+}
+
+/* .redd {
+  color: red;
+  margin: 30px 0 10px 0;
+  font-size: 25px;
+  text-transform: uppercase;
+  text-align: left; 
+} */
+
 .nested-header {
   padding: 0;
   text-align: center;
@@ -232,136 +252,60 @@ tfoot td {
   font-size: 12px;
 }
 
-/* ================= RESPONSIVE ================= */
+/* ================= RESPONSIVE MEDIA QUERIES ================= */
 
-/* -------- TABLET (max-width: 992px) -------- */
-@media (max-width: 992px) {
-
-  .header-left img,
-  .header-right img {
-    width: 90px !important;
-    height: 90px;
-  }
-
+@media (max-width: 768px) {
   .header-left h1 {
     font-size: 24px !important;
+  }
+  
+  .header-left img, .header-right img {
+    width: 90px !important;
+    height: 90px !important;
+  }
+
+  .top-section {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .login-box {
+    width: 100%;
   }
 
   .content {
     padding: 20px;
   }
-
-  .main-ti {
-    font-size: 22px;
-  }
-
-  .top-section {
-    gap: 20px;
-  }
-
-  .login-box {
-    width: 260px;
-  }
-
-  th, td {
-    font-size: 13px;
-  }
-
-  .full-width {
-    width: 95%;
-  }
 }
 
-
-/* -------- MOBILE (max-width: 600px) -------- */
 @media (max-width: 600px) {
-
-  /* HEADER STACK */
   .header {
     flex-direction: column;
     text-align: center;
-    gap: 10px;
   }
 
   .header-left {
     flex-direction: column;
-  }
-
-  .header-left img,
-  .header-right img {
-    width: 70px !important;
-    height: 70px;
-    margin: 0;
+    margin-bottom: 10px;
   }
 
   .header-left h1 {
-    font-size: 18px !important;
-  }
-
-  .blue-strip {
-    font-size: 13px;
-  }
-
-  .content {
-    padding: 15px;
+    font-size: 20px !important;
+    margin-top: 10px;
   }
 
   .main-ti {
-    font-size: 18px;
-  }
-
-  /* STACK TABLE + LOGIN */
-  .top-section {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .login-box {
-    width: 100%;
-  }
-
-  /* TABLE SCROLL */
-  .phase-table-container {
-    overflow-x: auto;
-  }
-
-  table {
-    min-width: 600px;
-  }
-
-  th, td {
-    font-size: 12px;
-    padding: 5px;
-  }
-
-  /* DASHBOARD */
-  .full-width {
-    width: 100%;
+    font-size: 20px;
   }
 
   .redd {
     font-size: 18px;
     text-align: center;
   }
+}
 
-  .phase-nums span {
-    font-size: 12px;
-  }
-
-  /* BUTTONS */
-  .login-btn,
-  .clear-btn {
-    padding: 8px 16px;
-    font-size: 13px;
-  }
-
-  /* FOOTER */
-  .footer {
-    font-size: 11px;
-    padding: 12px;
-  }
-
-  .footer span {
-    font-size: 10px;
+@media (max-width: 1024px) {
+  .full-width {
+    width: 100%; /* On tablets and phones, let it take full width */
   }
 }

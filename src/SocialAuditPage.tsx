@@ -116,7 +116,7 @@ const SocialAuditPage: React.FC = () => {
 
         {/* TOP SECTION: Phase Table + Login Side by Side */}
         <div className="top-section">
-          <div className="phase-table-container">
+          <div className="phase-table-container table-responsive">
             <table>
               <thead>
                 <tr>
@@ -176,113 +176,117 @@ const SocialAuditPage: React.FC = () => {
             DASH BOARD FOR PMGKAY PHASE AUDIT - PMGKAY-(1,2,3,4,5,6,7)
           </h3>
 
-          <table className="large-table full-width">
-            <thead>
-              <tr>
-                <th colSpan={11} style={{ color: "green", textAlign: "center", fontSize: "18px" }}>
-                  PMGKAY SOCIAL AUDIT SUBMITTED FPSHOP DETAILS
-                </th>
-              </tr>
-              <tr>
-                <th>S.No</th>
-                <th>District Name</th>
-                <th>Total No.of FPShops</th>
-                <th colSpan={7} className="nested-header">Total No.of FpShops Data Entered In Following PMGKAY Phase
-                   <div className="phase-nums"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span></div>
-                </th>
-                <th>Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              {pmgkayDashboard.map(d => (
-                <tr key={d.sl}>
-                  <td>{d.sl}</td>
-                  <td>{d.district}</td>
-                  <td>{d.fps}</td>
-                  <td>{d.p1}</td>
-                  <td>{d.p2}</td>
-                  <td>{d.p3}</td>
-                  <td>{d.p4}</td>
-                  <td>{d.p5}</td>
-                  <td>{d.p6}</td>
-                  <td>{d.p7}</td>
-                  <td>{d.total}</td>
+          <div className="table-responsive">
+            <table className="large-table full-width">
+              <thead>
+                <tr>
+                  <th colSpan={11} style={{ color: "green", textAlign: "center", fontSize: "18px" }}>
+                    PMGKAY SOCIAL AUDIT SUBMITTED FPSHOP DETAILS
+                  </th>
                 </tr>
-              ))}
-            </tbody>
-            <tfoot>
-              <tr>
-                <td colSpan={2}><b>Total</b></td>
-                <td><b>17043</b></td>
-                <td><b>903</b></td>
-                <td><b>93</b></td>
-                <td><b>67</b></td>
-                <td><b>47</b></td>
-                <td><b>742</b></td>
-                <td><b>311</b></td>
-                <td><b>170</b></td>
-                <td><b>2346</b></td>
-              </tr>
-            </tfoot>
-          </table>
+                <tr>
+                  <th>S.No</th>
+                  <th>District Name</th>
+                  <th>Total No.of FPShops</th>
+                  <th colSpan={7} className="nested-header">Total No.of FpShops Data Entered In Following PMGKAY Phase
+                     <div className="phase-nums"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span></div>
+                  </th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                {pmgkayDashboard.map(d => (
+                  <tr key={d.sl}>
+                    <td>{d.sl}</td>
+                    <td>{d.district}</td>
+                    <td>{d.fps}</td>
+                    <td>{d.p1}</td>
+                    <td>{d.p2}</td>
+                    <td>{d.p3}</td>
+                    <td>{d.p4}</td>
+                    <td>{d.p5}</td>
+                    <td>{d.p6}</td>
+                    <td>{d.p7}</td>
+                    <td>{d.total}</td>
+                  </tr>
+                ))}
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colSpan={2}><b>Total</b></td>
+                  <td><b>17043</b></td>
+                  <td><b>903</b></td>
+                  <td><b>93</b></td>
+                  <td><b>67</b></td>
+                  <td><b>47</b></td>
+                  <td><b>742</b></td>
+                  <td><b>311</b></td>
+                  <td><b>170</b></td>
+                  <td><b>2346</b></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
 
-          <h3 className="red">
+          <h3 className="redd">
             DASH BOARD FOR REGULAR SOCIAL AUDIT Year From : 2018 to 2024
           </h3>
 
-          <table className="large-table full-width">
-            <thead>
-              <tr>
-                <th colSpan={11} style={{ color: "green", textAlign: "center", fontSize: "18px" }}>
-                  Regular SOCIAL AUDIT SUBMITTED FPSHOP DETAILS
-                </th>
-              </tr>
-              <tr>
-                <th>S.No</th>
-                <th>District Name</th>
-                <th>Total No.of FPShops</th>
-                <th>2018</th>
-                <th>2019</th>
-                <th>2020</th>
-                <th>2021</th>
-                <th>2022</th>
-                <th>2023</th>
-                <th>2024</th>
-                <th>Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              {regularSocialAuditDashboard.map(d => (
-                <tr key={d.sl}>
-                  <td>{d.sl}</td>
-                  <td>{d.district}</td>
-                  <td>{d.fps}</td>
-                  <td>{d.y2018}</td>
-                  <td>{d.y2019}</td>
-                  <td>{d.y2020}</td>
-                  <td>{d.y2021}</td>
-                  <td>{d.y2022}</td>
-                  <td>{d.y2023}</td>
-                  <td>{d.y2024}</td>
-                  <td>{d.total}</td>
+          <div className="table-responsive">
+            <table className="large-table full-width">
+              <thead>
+                <tr>
+                  <th colSpan={11} style={{ color: "green", textAlign: "center", fontSize: "18px" }}>
+                    Regular SOCIAL AUDIT SUBMITTED FPSHOP DETAILS
+                  </th>
                 </tr>
-              ))}
-            </tbody>
-            <tfoot>
-              <tr>
-                <td colSpan={2}><b>Total</b></td>
-                <td><b>17043</b></td>
-                <td><b>2</b></td>
-                <td><b>1</b></td>
-                <td><b>333</b></td>
-                <td><b>784</b></td>
-                <td><b>808</b></td>
-                <td><b>1368</b></td>
-                <td><b>1057</b></td>
-                <td><b>4765</b></td>
-              </tr>
-            </tfoot>
-          </table>
+                <tr>
+                  <th>S.No</th>
+                  <th>District Name</th>
+                  <th>Total No.of FPShops</th>
+                  <th>2018</th>
+                  <th>2019</th>
+                  <th>2020</th>
+                  <th>2021</th>
+                  <th>2022</th>
+                  <th>2023</th>
+                  <th>2024</th>
+                  <th>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                {regularSocialAuditDashboard.map(d => (
+                  <tr key={d.sl}>
+                    <td>{d.sl}</td>
+                    <td>{d.district}</td>
+                    <td>{d.fps}</td>
+                    <td>{d.y2018}</td>
+                    <td>{d.y2019}</td>
+                    <td>{d.y2020}</td>
+                    <td>{d.y2021}</td>
+                    <td>{d.y2022}</td>
+                    <td>{d.y2023}</td>
+                    <td>{d.y2024}</td>
+                    <td>{d.total}</td>
+                  </tr>
+                ))}
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colSpan={2}><b>Total</b></td>
+                  <td><b>17043</b></td>
+                  <td><b>2</b></td>
+                  <td><b>1</b></td>
+                  <td><b>333</b></td>
+                  <td><b>784</b></td>
+                  <td><b>808</b></td>
+                  <td><b>1368</b></td>
+                  <td><b>1057</b></td>
+                  <td><b>4765</b></td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
         </div>
       </div>
 
