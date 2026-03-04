@@ -46,8 +46,8 @@ const HeroSection = ({ cards }: HeroSectionProps) => {
               transition={{ duration: 0.3 }}
             >
               {/* Image Card */}
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div className="relative aspect-[3/4] overflow-hidden">
+              <div className="bg-white rounded-lg shadow-lg overflow-visible">
+                <div className="relative aspect-[3/4] ">
                   <img
                     src={card.image}
                     alt={card.name}
