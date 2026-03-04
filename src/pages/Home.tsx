@@ -7,7 +7,7 @@ import ContactsPanel from '@/components/ContactsPanel/ContactsPanel';
 // Images
 import cmImage from '@/assets/revanthReddy.jpeg';
 import ministerImage from '@/assets/uttam.jpeg';
-import commissionerImage from '@/assets/DS.webp';
+import commissionerImage from '@/assets/civil.jpeg';
 
 const heroCards = [
   {
@@ -18,7 +18,7 @@ const heroCards = [
   },
   {
     image: commissionerImage,
-    name: 'Sri D.S Chouhan IPS',
+    name: 'Shri Stephen Ravindra, IPS',
     title: 'Commissioner of Civil Supplies',
     subtitle: 'Telangana',
   },

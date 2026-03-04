@@ -121,7 +121,20 @@ const menuItems: MenuItem[] = [
     ],
   },
   { label: 'SOCIAL AUDIT REPORTS', href: '/audit' },
-  { label: 'LOGIN', component: <LoginDropdown /> },
+  {
+  label: "LOGIN",submenu: [ 
+  { label: 'FPS Shop Dealer Commission', href: '/login/fps-dealer' },
+  { label: 'Upload Social Audit Report', href: '/login/social-audit' },
+  { label: 'FPS Shop Management System', href: '/login/fps-management' },
+  { label: 'Price Monitor Login', href: '/login/price-monitor' },
+  { label: 'Gunny Bag Management System', href: '/login/gunny-bag' },
+  { label: 'Vigilance Committee Management System', href: '/login/vigilance' },
+  { label: 'Statistics Login', href: '/login/statistics' },
+  { label: 'Department Login', href: '/login/department' },
+  { label: '6A Case', href: '/login/6a-case' },
+  { label: 'Paddy Allotment Management System', href: '/login/paddy-allotment' },
+],
+},
   { label: 'CONTACTS', href: '/contacts' },
 ];
 
@@ -175,13 +188,13 @@ const Navbar = ({ isSticky = false }: NavbarProps) => {
 
       {/* Desktop Navigation */}
       <nav
-        className={`bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 hidden lg:block ${
-          isSticky ? 'fixed top-0 left-0 right-0 z-50 shadow-lg' : 'relative'
+  className={`bg-gradient-to-r from-blue-900 via-blue-800 to-blue-900 hidden lg:block overflow-visible ${
+          isSticky ? 'fixed top-0 left-0 right-0 z-50 shadow-lg' : ''
         }`}
       >
         <div className="w-full px-2 max-w-[1600px] mx-auto">
-          <ul className="flex flex-nowrap justify-center gap-0.5 items-center">
-            {menuItems.map((item) => (
+          <ul className="flex flex-nowrap justify-center gap-0.5 items-center overflow-visible">
+            {menuItems.map((item, index) => (
               <li key={item.label} className="relative nav-item group">
                 {item.submenu ? (
                   <>
@@ -189,7 +202,11 @@ const Navbar = ({ isSticky = false }: NavbarProps) => {
                       {item.label}
                       <ChevronDown className="w-3 h-3" />
                     </button>
-                    <div className="absolute top-full left-0 hidden group-hover:block z-[100] min-w-[250px] max-h-[60vh] overflow-y-auto bg-white shadow-2xl rounded-b-md custom-scrollbar">
+                    <div
+  className={`absolute top-full ${
+    item.label === "LOGIN" ? "right-0" : "left-0"
+  } hidden group-hover:block z-[9999] min-w-[250px] max-h-[60vh] overflow-y-auto bg-white shadow-2xl rounded-b-md custom-scrollbar`}
+>
                       {item.submenu.map((sub, index) => (
                         <button
                           key={sub.label}
@@ -208,11 +225,7 @@ const Navbar = ({ isSticky = false }: NavbarProps) => {
                       ))}
                     </div>
                   </>
-                ) : item.component ? (
-                  <div className="nav-button block whitespace-nowrap py-3 px-2 text-[10px] xl:text-xs 2xl:text-sm font-medium w-full">
-                    {item.component}
-                  </div>
-                ) : (
+                )  : (
                   <button
                     onClick={() => item.href && handleNavigation(item.href)}
                     className="nav-button block whitespace-nowrap text-white hover:bg-white/10 transition-colors py-3 px-2 text-[10px] xl:text-xs 2xl:text-sm font-medium w-full"
